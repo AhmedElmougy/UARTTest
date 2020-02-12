@@ -1,0 +1,1812 @@
+
+UARTTest.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         00000be8  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         0000007a  00800060  00000be8  00000c7c  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          00000001  008000da  008000da  00000cf6  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  00000cf6  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00000d28  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 000001c8  00000000  00000000  00000d64  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   000019a2  00000000  00000000  00000f2c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 00000a60  00000000  00000000  000028ce  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   00000e10  00000000  00000000  0000332e  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  00000458  00000000  00000000  00004140  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    000008ff  00000000  00000000  00004598  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    0000163d  00000000  00000000  00004e97  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 00000158  00000000  00000000  000064d4  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 2a 00 	jmp	0x54	; 0x54 <__ctors_end>
+   4:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+   8:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+   c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  10:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  14:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  18:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  1c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  20:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  24:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  28:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  2c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  30:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  34:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  38:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  3c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  40:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  44:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  48:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  4c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  50:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+
+00000054 <__ctors_end>:
+  54:	11 24       	eor	r1, r1
+  56:	1f be       	out	0x3f, r1	; 63
+  58:	cf e5       	ldi	r28, 0x5F	; 95
+  5a:	d8 e0       	ldi	r29, 0x08	; 8
+  5c:	de bf       	out	0x3e, r29	; 62
+  5e:	cd bf       	out	0x3d, r28	; 61
+
+00000060 <__do_copy_data>:
+  60:	10 e0       	ldi	r17, 0x00	; 0
+  62:	a0 e6       	ldi	r26, 0x60	; 96
+  64:	b0 e0       	ldi	r27, 0x00	; 0
+  66:	e8 ee       	ldi	r30, 0xE8	; 232
+  68:	fb e0       	ldi	r31, 0x0B	; 11
+  6a:	02 c0       	rjmp	.+4      	; 0x70 <__do_copy_data+0x10>
+  6c:	05 90       	lpm	r0, Z+
+  6e:	0d 92       	st	X+, r0
+  70:	aa 3d       	cpi	r26, 0xDA	; 218
+  72:	b1 07       	cpc	r27, r17
+  74:	d9 f7       	brne	.-10     	; 0x6c <__do_copy_data+0xc>
+
+00000076 <__do_clear_bss>:
+  76:	20 e0       	ldi	r18, 0x00	; 0
+  78:	aa ed       	ldi	r26, 0xDA	; 218
+  7a:	b0 e0       	ldi	r27, 0x00	; 0
+  7c:	01 c0       	rjmp	.+2      	; 0x80 <.do_clear_bss_start>
+
+0000007e <.do_clear_bss_loop>:
+  7e:	1d 92       	st	X+, r1
+
+00000080 <.do_clear_bss_start>:
+  80:	ab 3d       	cpi	r26, 0xDB	; 219
+  82:	b2 07       	cpc	r27, r18
+  84:	e1 f7       	brne	.-8      	; 0x7e <.do_clear_bss_loop>
+  86:	0e 94 1f 03 	call	0x63e	; 0x63e <main>
+  8a:	0c 94 f2 05 	jmp	0xbe4	; 0xbe4 <_exit>
+
+0000008e <__bad_interrupt>:
+  8e:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+00000092 <HKPD_voidInitializeKeypad>:
+ * Description : initialize 4X4 keypad at a given port set 4 pins output and 4 pins input
+ * Arguments   : void
+ * Return      : void  
+ */
+ void HKPD_voidInitializeKeypad(void)
+ {
+  92:	cf 92       	push	r12
+  94:	df 92       	push	r13
+  96:	ef 92       	push	r14
+  98:	ff 92       	push	r15
+  9a:	0f 93       	push	r16
+  9c:	1f 93       	push	r17
+  9e:	cf 93       	push	r28
+  a0:	df 93       	push	r29
+  a2:	04 e6       	ldi	r16, 0x64	; 100
+  a4:	10 e0       	ldi	r17, 0x00	; 0
+  a6:	c0 e6       	ldi	r28, 0x60	; 96
+  a8:	d0 e0       	ldi	r29, 0x00	; 0
+  aa:	0f 2e       	mov	r0, r31
+  ac:	f4 e6       	ldi	r31, 0x64	; 100
+  ae:	cf 2e       	mov	r12, r31
+  b0:	f0 e0       	ldi	r31, 0x00	; 0
+  b2:	df 2e       	mov	r13, r31
+  b4:	f0 2d       	mov	r31, r0
+	
+	 /*for loop to scan all keypad columns and rows*/
+	 for (u8 i = 0 ; i<4 ; i++)
+	 {
+	 	 /*set column current bit in ColumnArray[] OUTPUT*/
+		 MDIO_u8SetDirectionBit(KEYPAD_PORT,HKPD_u8ColumnArray[i],MDIO_OUTPUT);
+  b6:	f8 01       	movw	r30, r16
+  b8:	61 91       	ld	r22, Z+
+  ba:	8f 01       	movw	r16, r30
+  bc:	41 e0       	ldi	r20, 0x01	; 1
+  be:	82 e0       	ldi	r24, 0x02	; 2
+  c0:	0e 94 6f 03 	call	0x6de	; 0x6de <MDIO_u8SetDirectionBit>
+  c4:	7e 01       	movw	r14, r28
+	
+		 /*set current bit in RowArray[] INPUT*/
+		 MDIO_u8SetDirectionBit(KEYPAD_PORT,HKPD_u8RowArray[i],MDIO_INPUT);
+  c6:	40 e0       	ldi	r20, 0x00	; 0
+  c8:	69 91       	ld	r22, Y+
+  ca:	82 e0       	ldi	r24, 0x02	; 2
+  cc:	0e 94 6f 03 	call	0x6de	; 0x6de <MDIO_u8SetDirectionBit>
+		
+		 /*Enable pull up resistor for current bit in RowArray[]*/
+		 MDIO_u8ConfigPullupBit(KEYPAD_PORT,HKPD_u8RowArray[i],MDIO_EN_PULL_UP_RES);
+  d0:	41 e0       	ldi	r20, 0x01	; 1
+  d2:	f7 01       	movw	r30, r14
+  d4:	60 81       	ld	r22, Z
+  d6:	82 e0       	ldi	r24, 0x02	; 2
+  d8:	0e 94 b0 04 	call	0x960	; 0x960 <MDIO_u8ConfigPullupBit>
+ */
+ void HKPD_voidInitializeKeypad(void)
+ {
+	
+	 /*for loop to scan all keypad columns and rows*/
+	 for (u8 i = 0 ; i<4 ; i++)
+  dc:	cc 15       	cp	r28, r12
+  de:	dd 05       	cpc	r29, r13
+  e0:	51 f7       	brne	.-44     	; 0xb6 <HKPD_voidInitializeKeypad+0x24>
+		 /*Enable pull up resistor for current bit in RowArray[]*/
+		 MDIO_u8ConfigPullupBit(KEYPAD_PORT,HKPD_u8RowArray[i],MDIO_EN_PULL_UP_RES);
+		
+	 }/*end of for loop*/
+	
+ }/*end of HKPD_voidInitializeKeypad()*/
+  e2:	df 91       	pop	r29
+  e4:	cf 91       	pop	r28
+  e6:	1f 91       	pop	r17
+  e8:	0f 91       	pop	r16
+  ea:	ff 90       	pop	r15
+  ec:	ef 90       	pop	r14
+  ee:	df 90       	pop	r13
+  f0:	cf 90       	pop	r12
+  f2:	08 95       	ret
+
+000000f4 <HKPD_u8GetPressedKey>:
+ * Description : Return which key in the keypad has been pressed
+ * Arguments   : void
+ * return      : u8 pressed key
+ */
+ u8 HKPD_u8GetPressedKey(void)
+ {
+  f4:	6f 92       	push	r6
+  f6:	7f 92       	push	r7
+  f8:	8f 92       	push	r8
+  fa:	9f 92       	push	r9
+  fc:	af 92       	push	r10
+  fe:	bf 92       	push	r11
+ 100:	cf 92       	push	r12
+ 102:	df 92       	push	r13
+ 104:	ef 92       	push	r14
+ 106:	ff 92       	push	r15
+ 108:	0f 93       	push	r16
+ 10a:	1f 93       	push	r17
+ 10c:	cf 93       	push	r28
+ 10e:	df 93       	push	r29
+ 110:	0f 2e       	mov	r0, r31
+ 112:	f4 e6       	ldi	r31, 0x64	; 100
+ 114:	ef 2e       	mov	r14, r31
+ 116:	f0 e0       	ldi	r31, 0x00	; 0
+ 118:	ff 2e       	mov	r15, r31
+ 11a:	f0 2d       	mov	r31, r0
+ 11c:	08 e6       	ldi	r16, 0x68	; 104
+ 11e:	10 e0       	ldi	r17, 0x00	; 0
+ 120:	e7 01       	movw	r28, r14
+	 
+	/*for loop to set all column pins HIGH*/
+	for (u8 i = 0; i<4 ;i++ )
+	{
+		/*set current pin in ColumnArray HIGH*/
+		MDIO_u8WriteBit(KEYPAD_PORT,HKPD_u8ColumnArray[i],MDIO_HIGH);
+ 122:	69 91       	ld	r22, Y+
+ 124:	41 e0       	ldi	r20, 0x01	; 1
+ 126:	82 e0       	ldi	r24, 0x02	; 2
+ 128:	0e 94 f7 03 	call	0x7ee	; 0x7ee <MDIO_u8WriteBit>
+ */
+ u8 HKPD_u8GetPressedKey(void)
+ {
+	 
+	/*for loop to set all column pins HIGH*/
+	for (u8 i = 0; i<4 ;i++ )
+ 12c:	c0 17       	cp	r28, r16
+ 12e:	d1 07       	cpc	r29, r17
+ 130:	c1 f7       	brne	.-16     	; 0x122 <HKPD_u8GetPressedKey+0x2e>
+ 132:	c1 2c       	mov	r12, r1
+ 134:	d1 2c       	mov	r13, r1
+	
+	/*for loop to scan all keypad columns*/
+	for (u8 i = 0 ; i<4 ; i++)
+	{
+		/*set current column pin low to test all row pins to find out which button has been pressed*/
+		MDIO_u8WriteBit(KEYPAD_PORT,HKPD_u8ColumnArray[i],MDIO_LOW);
+ 136:	46 01       	movw	r8, r12
+ 138:	57 01       	movw	r10, r14
+ 13a:	40 e0       	ldi	r20, 0x00	; 0
+ 13c:	f7 01       	movw	r30, r14
+ 13e:	60 81       	ld	r22, Z
+ 140:	82 e0       	ldi	r24, 0x02	; 2
+ 142:	0e 94 f7 03 	call	0x7ee	; 0x7ee <MDIO_u8WriteBit>
+ 146:	c0 e6       	ldi	r28, 0x60	; 96
+ 148:	d0 e0       	ldi	r29, 0x00	; 0
+ 14a:	61 2c       	mov	r6, r1
+ 14c:	71 2c       	mov	r7, r1
+		
+		/*for loop to scan and test all keypad row pins*/
+		for (u8 j = 0 ; j<4 ; j++)
+		{
+			/*check current row pin value*/
+			if ( MDIO_LOW == MDIO_u8ReadBit(KEYPAD_PORT,HKPD_u8RowArray[j]) )
+ 14e:	83 01       	movw	r16, r6
+ 150:	69 91       	ld	r22, Y+
+ 152:	82 e0       	ldi	r24, 0x02	; 2
+ 154:	0e 94 7b 04 	call	0x8f6	; 0x8f6 <MDIO_u8ReadBit>
+ 158:	81 11       	cpse	r24, r1
+ 15a:	0b c0       	rjmp	.+22     	; 0x172 <HKPD_u8GetPressedKey+0x7e>
+			{
+				/*return pressed button value*/
+				return KeyPadArr[j][i];
+ 15c:	00 0f       	add	r16, r16
+ 15e:	11 1f       	adc	r17, r17
+ 160:	00 0f       	add	r16, r16
+ 162:	11 1f       	adc	r17, r17
+ 164:	06 59       	subi	r16, 0x96	; 150
+ 166:	1f 4f       	sbci	r17, 0xFF	; 255
+ 168:	f8 01       	movw	r30, r16
+ 16a:	e8 0d       	add	r30, r8
+ 16c:	f9 1d       	adc	r31, r9
+ 16e:	80 81       	ld	r24, Z
+ 170:	18 c0       	rjmp	.+48     	; 0x1a2 <HKPD_u8GetPressedKey+0xae>
+ 172:	ff ef       	ldi	r31, 0xFF	; 255
+ 174:	6f 1a       	sub	r6, r31
+ 176:	7f 0a       	sbc	r7, r31
+	{
+		/*set current column pin low to test all row pins to find out which button has been pressed*/
+		MDIO_u8WriteBit(KEYPAD_PORT,HKPD_u8ColumnArray[i],MDIO_LOW);
+		
+		/*for loop to scan and test all keypad row pins*/
+		for (u8 j = 0 ; j<4 ; j++)
+ 178:	84 e0       	ldi	r24, 0x04	; 4
+ 17a:	68 16       	cp	r6, r24
+ 17c:	71 04       	cpc	r7, r1
+ 17e:	39 f7       	brne	.-50     	; 0x14e <HKPD_u8GetPressedKey+0x5a>
+ 180:	ef ef       	ldi	r30, 0xFF	; 255
+ 182:	ee 1a       	sub	r14, r30
+ 184:	fe 0a       	sbc	r15, r30
+				return KeyPadArr[j][i];
+			}	
+		}/*end of for loop*/
+		
+		/*set current column pin HIGH again*/
+		MDIO_u8WriteBit(KEYPAD_PORT,HKPD_u8ColumnArray[i],MDIO_HIGH);
+ 186:	41 e0       	ldi	r20, 0x01	; 1
+ 188:	f5 01       	movw	r30, r10
+ 18a:	60 81       	ld	r22, Z
+ 18c:	82 e0       	ldi	r24, 0x02	; 2
+ 18e:	0e 94 f7 03 	call	0x7ee	; 0x7ee <MDIO_u8WriteBit>
+ 192:	ff ef       	ldi	r31, 0xFF	; 255
+ 194:	cf 1a       	sub	r12, r31
+ 196:	df 0a       	sbc	r13, r31
+		MDIO_u8WriteBit(KEYPAD_PORT,HKPD_u8ColumnArray[i],MDIO_HIGH);
+		
+	}/*end of for loop*/
+	
+	/*for loop to scan all keypad columns*/
+	for (u8 i = 0 ; i<4 ; i++)
+ 198:	84 e0       	ldi	r24, 0x04	; 4
+ 19a:	c8 16       	cp	r12, r24
+ 19c:	d1 04       	cpc	r13, r1
+ 19e:	59 f6       	brne	.-106    	; 0x136 <HKPD_u8GetPressedKey+0x42>
+		MDIO_u8WriteBit(KEYPAD_PORT,HKPD_u8ColumnArray[i],MDIO_HIGH);
+		
+	}/*end of for loop*/	
+	
+	/*Report no Button pressed*/
+	return '?';
+ 1a0:	8f e3       	ldi	r24, 0x3F	; 63
+		
+}/*end of HKPD_u8GetPressedKey()*/
+ 1a2:	df 91       	pop	r29
+ 1a4:	cf 91       	pop	r28
+ 1a6:	1f 91       	pop	r17
+ 1a8:	0f 91       	pop	r16
+ 1aa:	ff 90       	pop	r15
+ 1ac:	ef 90       	pop	r14
+ 1ae:	df 90       	pop	r13
+ 1b0:	cf 90       	pop	r12
+ 1b2:	bf 90       	pop	r11
+ 1b4:	af 90       	pop	r10
+ 1b6:	9f 90       	pop	r9
+ 1b8:	8f 90       	pop	r8
+ 1ba:	7f 90       	pop	r7
+ 1bc:	6f 90       	pop	r6
+ 1be:	08 95       	ret
+
+000001c0 <HLCD_voidWriteData>:
+		  /*Shift cursor one step Left instruction*/
+		  HLCD_voidWriteCommand(HLCD_CURSOR_SHIFT_LEFT); 
+		  
+	  }/*end of steps for loop*/
+	  
+  }/*end of HLCD_voidCursorShiftLeft()*/
+ 1c0:	ef 92       	push	r14
+ 1c2:	ff 92       	push	r15
+ 1c4:	0f 93       	push	r16
+ 1c6:	1f 93       	push	r17
+ 1c8:	cf 93       	push	r28
+ 1ca:	df 93       	push	r29
+ 1cc:	e8 2e       	mov	r14, r24
+ 1ce:	40 e0       	ldi	r20, 0x00	; 0
+ 1d0:	61 e0       	ldi	r22, 0x01	; 1
+ 1d2:	81 e0       	ldi	r24, 0x01	; 1
+ 1d4:	0e 94 f7 03 	call	0x7ee	; 0x7ee <MDIO_u8WriteBit>
+ 1d8:	41 e0       	ldi	r20, 0x01	; 1
+ 1da:	62 e0       	ldi	r22, 0x02	; 2
+ 1dc:	81 e0       	ldi	r24, 0x01	; 1
+ 1de:	0e 94 f7 03 	call	0x7ee	; 0x7ee <MDIO_u8WriteBit>
+ 1e2:	c4 e0       	ldi	r28, 0x04	; 4
+ 1e4:	d0 e0       	ldi	r29, 0x00	; 0
+ 1e6:	f1 2c       	mov	r15, r1
+ 1e8:	87 01       	movw	r16, r14
+ 1ea:	a7 01       	movw	r20, r14
+ 1ec:	0c 2e       	mov	r0, r28
+ 1ee:	02 c0       	rjmp	.+4      	; 0x1f4 <HLCD_voidWriteData+0x34>
+ 1f0:	55 95       	asr	r21
+ 1f2:	47 95       	ror	r20
+ 1f4:	0a 94       	dec	r0
+ 1f6:	e2 f7       	brpl	.-8      	; 0x1f0 <HLCD_voidWriteData+0x30>
+ 1f8:	41 70       	andi	r20, 0x01	; 1
+ 1fa:	6c 2f       	mov	r22, r28
+ 1fc:	81 e0       	ldi	r24, 0x01	; 1
+ 1fe:	0e 94 f7 03 	call	0x7ee	; 0x7ee <MDIO_u8WriteBit>
+ 202:	21 96       	adiw	r28, 0x01	; 1
+ 204:	c8 30       	cpi	r28, 0x08	; 8
+ 206:	d1 05       	cpc	r29, r1
+ 208:	79 f7       	brne	.-34     	; 0x1e8 <HLCD_voidWriteData+0x28>
+ 20a:	41 e0       	ldi	r20, 0x01	; 1
+ 20c:	60 e0       	ldi	r22, 0x00	; 0
+ 20e:	81 e0       	ldi	r24, 0x01	; 1
+ 210:	0e 94 f7 03 	call	0x7ee	; 0x7ee <MDIO_u8WriteBit>
+ 214:	62 e0       	ldi	r22, 0x02	; 2
+ 216:	70 e0       	ldi	r23, 0x00	; 0
+ 218:	80 e0       	ldi	r24, 0x00	; 0
+ 21a:	90 e0       	ldi	r25, 0x00	; 0
+ 21c:	0e 94 b7 02 	call	0x56e	; 0x56e <LDelay_voidDelay_ms>
+ 220:	40 e0       	ldi	r20, 0x00	; 0
+ 222:	60 e0       	ldi	r22, 0x00	; 0
+ 224:	81 e0       	ldi	r24, 0x01	; 1
+ 226:	0e 94 f7 03 	call	0x7ee	; 0x7ee <MDIO_u8WriteBit>
+ 22a:	c4 e0       	ldi	r28, 0x04	; 4
+ 22c:	e1 2c       	mov	r14, r1
+ 22e:	f1 2c       	mov	r15, r1
+ 230:	a8 01       	movw	r20, r16
+ 232:	0e 2c       	mov	r0, r14
+ 234:	02 c0       	rjmp	.+4      	; 0x23a <HLCD_voidWriteData+0x7a>
+ 236:	55 95       	asr	r21
+ 238:	47 95       	ror	r20
+ 23a:	0a 94       	dec	r0
+ 23c:	e2 f7       	brpl	.-8      	; 0x236 <HLCD_voidWriteData+0x76>
+ 23e:	41 70       	andi	r20, 0x01	; 1
+ 240:	6c 2f       	mov	r22, r28
+ 242:	81 e0       	ldi	r24, 0x01	; 1
+ 244:	0e 94 f7 03 	call	0x7ee	; 0x7ee <MDIO_u8WriteBit>
+ 248:	8f ef       	ldi	r24, 0xFF	; 255
+ 24a:	e8 1a       	sub	r14, r24
+ 24c:	f8 0a       	sbc	r15, r24
+ 24e:	cf 5f       	subi	r28, 0xFF	; 255
+ 250:	c8 30       	cpi	r28, 0x08	; 8
+ 252:	71 f7       	brne	.-36     	; 0x230 <HLCD_voidWriteData+0x70>
+ 254:	41 e0       	ldi	r20, 0x01	; 1
+ 256:	60 e0       	ldi	r22, 0x00	; 0
+ 258:	81 e0       	ldi	r24, 0x01	; 1
+ 25a:	0e 94 f7 03 	call	0x7ee	; 0x7ee <MDIO_u8WriteBit>
+ 25e:	62 e0       	ldi	r22, 0x02	; 2
+ 260:	70 e0       	ldi	r23, 0x00	; 0
+ 262:	80 e0       	ldi	r24, 0x00	; 0
+ 264:	90 e0       	ldi	r25, 0x00	; 0
+ 266:	0e 94 b7 02 	call	0x56e	; 0x56e <LDelay_voidDelay_ms>
+ 26a:	40 e0       	ldi	r20, 0x00	; 0
+ 26c:	60 e0       	ldi	r22, 0x00	; 0
+ 26e:	81 e0       	ldi	r24, 0x01	; 1
+ 270:	0e 94 f7 03 	call	0x7ee	; 0x7ee <MDIO_u8WriteBit>
+ 274:	df 91       	pop	r29
+ 276:	cf 91       	pop	r28
+ 278:	1f 91       	pop	r17
+ 27a:	0f 91       	pop	r16
+ 27c:	ff 90       	pop	r15
+ 27e:	ef 90       	pop	r14
+ 280:	08 95       	ret
+
+00000282 <HLCD_voidWriteCommand>:
+ 282:	ef 92       	push	r14
+ 284:	ff 92       	push	r15
+ 286:	0f 93       	push	r16
+ 288:	1f 93       	push	r17
+ 28a:	cf 93       	push	r28
+ 28c:	df 93       	push	r29
+ 28e:	e8 2e       	mov	r14, r24
+ 290:	40 e0       	ldi	r20, 0x00	; 0
+ 292:	61 e0       	ldi	r22, 0x01	; 1
+ 294:	81 e0       	ldi	r24, 0x01	; 1
+ 296:	0e 94 f7 03 	call	0x7ee	; 0x7ee <MDIO_u8WriteBit>
+ 29a:	40 e0       	ldi	r20, 0x00	; 0
+ 29c:	62 e0       	ldi	r22, 0x02	; 2
+ 29e:	81 e0       	ldi	r24, 0x01	; 1
+ 2a0:	0e 94 f7 03 	call	0x7ee	; 0x7ee <MDIO_u8WriteBit>
+ 2a4:	c4 e0       	ldi	r28, 0x04	; 4
+ 2a6:	d0 e0       	ldi	r29, 0x00	; 0
+ 2a8:	f1 2c       	mov	r15, r1
+ 2aa:	87 01       	movw	r16, r14
+ 2ac:	a7 01       	movw	r20, r14
+ 2ae:	0c 2e       	mov	r0, r28
+ 2b0:	02 c0       	rjmp	.+4      	; 0x2b6 <HLCD_voidWriteCommand+0x34>
+ 2b2:	55 95       	asr	r21
+ 2b4:	47 95       	ror	r20
+ 2b6:	0a 94       	dec	r0
+ 2b8:	e2 f7       	brpl	.-8      	; 0x2b2 <HLCD_voidWriteCommand+0x30>
+ 2ba:	41 70       	andi	r20, 0x01	; 1
+ 2bc:	6c 2f       	mov	r22, r28
+ 2be:	81 e0       	ldi	r24, 0x01	; 1
+ 2c0:	0e 94 f7 03 	call	0x7ee	; 0x7ee <MDIO_u8WriteBit>
+ 2c4:	21 96       	adiw	r28, 0x01	; 1
+ 2c6:	c8 30       	cpi	r28, 0x08	; 8
+ 2c8:	d1 05       	cpc	r29, r1
+ 2ca:	79 f7       	brne	.-34     	; 0x2aa <HLCD_voidWriteCommand+0x28>
+ 2cc:	41 e0       	ldi	r20, 0x01	; 1
+ 2ce:	60 e0       	ldi	r22, 0x00	; 0
+ 2d0:	81 e0       	ldi	r24, 0x01	; 1
+ 2d2:	0e 94 f7 03 	call	0x7ee	; 0x7ee <MDIO_u8WriteBit>
+ 2d6:	62 e0       	ldi	r22, 0x02	; 2
+ 2d8:	70 e0       	ldi	r23, 0x00	; 0
+ 2da:	80 e0       	ldi	r24, 0x00	; 0
+ 2dc:	90 e0       	ldi	r25, 0x00	; 0
+ 2de:	0e 94 b7 02 	call	0x56e	; 0x56e <LDelay_voidDelay_ms>
+ 2e2:	40 e0       	ldi	r20, 0x00	; 0
+ 2e4:	60 e0       	ldi	r22, 0x00	; 0
+ 2e6:	81 e0       	ldi	r24, 0x01	; 1
+ 2e8:	0e 94 f7 03 	call	0x7ee	; 0x7ee <MDIO_u8WriteBit>
+ 2ec:	c4 e0       	ldi	r28, 0x04	; 4
+ 2ee:	e1 2c       	mov	r14, r1
+ 2f0:	f1 2c       	mov	r15, r1
+ 2f2:	a8 01       	movw	r20, r16
+ 2f4:	0e 2c       	mov	r0, r14
+ 2f6:	02 c0       	rjmp	.+4      	; 0x2fc <HLCD_voidWriteCommand+0x7a>
+ 2f8:	55 95       	asr	r21
+ 2fa:	47 95       	ror	r20
+ 2fc:	0a 94       	dec	r0
+ 2fe:	e2 f7       	brpl	.-8      	; 0x2f8 <HLCD_voidWriteCommand+0x76>
+ 300:	41 70       	andi	r20, 0x01	; 1
+ 302:	6c 2f       	mov	r22, r28
+ 304:	81 e0       	ldi	r24, 0x01	; 1
+ 306:	0e 94 f7 03 	call	0x7ee	; 0x7ee <MDIO_u8WriteBit>
+ 30a:	8f ef       	ldi	r24, 0xFF	; 255
+ 30c:	e8 1a       	sub	r14, r24
+ 30e:	f8 0a       	sbc	r15, r24
+ 310:	cf 5f       	subi	r28, 0xFF	; 255
+ 312:	c8 30       	cpi	r28, 0x08	; 8
+ 314:	71 f7       	brne	.-36     	; 0x2f2 <HLCD_voidWriteCommand+0x70>
+ 316:	41 e0       	ldi	r20, 0x01	; 1
+ 318:	60 e0       	ldi	r22, 0x00	; 0
+ 31a:	81 e0       	ldi	r24, 0x01	; 1
+ 31c:	0e 94 f7 03 	call	0x7ee	; 0x7ee <MDIO_u8WriteBit>
+ 320:	62 e0       	ldi	r22, 0x02	; 2
+ 322:	70 e0       	ldi	r23, 0x00	; 0
+ 324:	80 e0       	ldi	r24, 0x00	; 0
+ 326:	90 e0       	ldi	r25, 0x00	; 0
+ 328:	0e 94 b7 02 	call	0x56e	; 0x56e <LDelay_voidDelay_ms>
+ 32c:	40 e0       	ldi	r20, 0x00	; 0
+ 32e:	60 e0       	ldi	r22, 0x00	; 0
+ 330:	81 e0       	ldi	r24, 0x01	; 1
+ 332:	0e 94 f7 03 	call	0x7ee	; 0x7ee <MDIO_u8WriteBit>
+ 336:	df 91       	pop	r29
+ 338:	cf 91       	pop	r28
+ 33a:	1f 91       	pop	r17
+ 33c:	0f 91       	pop	r16
+ 33e:	ff 90       	pop	r15
+ 340:	ef 90       	pop	r14
+ 342:	08 95       	ret
+
+00000344 <HLCD_voidInitializeLCD>:
+ 344:	ef 92       	push	r14
+ 346:	ff 92       	push	r15
+ 348:	0f 93       	push	r16
+ 34a:	1f 93       	push	r17
+ 34c:	cf 93       	push	r28
+ 34e:	df 93       	push	r29
+ 350:	41 e0       	ldi	r20, 0x01	; 1
+ 352:	62 e0       	ldi	r22, 0x02	; 2
+ 354:	81 e0       	ldi	r24, 0x01	; 1
+ 356:	0e 94 6f 03 	call	0x6de	; 0x6de <MDIO_u8SetDirectionBit>
+ 35a:	41 e0       	ldi	r20, 0x01	; 1
+ 35c:	61 e0       	ldi	r22, 0x01	; 1
+ 35e:	81 e0       	ldi	r24, 0x01	; 1
+ 360:	0e 94 6f 03 	call	0x6de	; 0x6de <MDIO_u8SetDirectionBit>
+ 364:	41 e0       	ldi	r20, 0x01	; 1
+ 366:	60 e0       	ldi	r22, 0x00	; 0
+ 368:	81 e0       	ldi	r24, 0x01	; 1
+ 36a:	0e 94 6f 03 	call	0x6de	; 0x6de <MDIO_u8SetDirectionBit>
+ 36e:	61 e0       	ldi	r22, 0x01	; 1
+ 370:	81 e0       	ldi	r24, 0x01	; 1
+ 372:	0e 94 53 03 	call	0x6a6	; 0x6a6 <MDIO_u8SetDirectionReg>
+ 376:	62 e3       	ldi	r22, 0x32	; 50
+ 378:	70 e0       	ldi	r23, 0x00	; 0
+ 37a:	80 e0       	ldi	r24, 0x00	; 0
+ 37c:	90 e0       	ldi	r25, 0x00	; 0
+ 37e:	0e 94 b7 02 	call	0x56e	; 0x56e <LDelay_voidDelay_ms>
+ 382:	80 91 68 00 	lds	r24, 0x0068	; 0x800068 <FontSizeAndLineCommand>
+ 386:	8b 7f       	andi	r24, 0xFB	; 251
+ 388:	88 60       	ori	r24, 0x08	; 8
+ 38a:	80 93 68 00 	sts	0x0068, r24	; 0x800068 <FontSizeAndLineCommand>
+ 38e:	82 e2       	ldi	r24, 0x22	; 34
+ 390:	0e 94 41 01 	call	0x282	; 0x282 <HLCD_voidWriteCommand>
+ 394:	80 91 68 00 	lds	r24, 0x0068	; 0x800068 <FontSizeAndLineCommand>
+ 398:	0e 94 41 01 	call	0x282	; 0x282 <HLCD_voidWriteCommand>
+ 39c:	61 e0       	ldi	r22, 0x01	; 1
+ 39e:	70 e0       	ldi	r23, 0x00	; 0
+ 3a0:	80 e0       	ldi	r24, 0x00	; 0
+ 3a2:	90 e0       	ldi	r25, 0x00	; 0
+ 3a4:	0e 94 b7 02 	call	0x56e	; 0x56e <LDelay_voidDelay_ms>
+ 3a8:	80 91 69 00 	lds	r24, 0x0069	; 0x800069 <DisplayAndCursorCommand>
+ 3ac:	0e 94 41 01 	call	0x282	; 0x282 <HLCD_voidWriteCommand>
+ 3b0:	61 e0       	ldi	r22, 0x01	; 1
+ 3b2:	70 e0       	ldi	r23, 0x00	; 0
+ 3b4:	80 e0       	ldi	r24, 0x00	; 0
+ 3b6:	90 e0       	ldi	r25, 0x00	; 0
+ 3b8:	0e 94 b7 02 	call	0x56e	; 0x56e <LDelay_voidDelay_ms>
+ 3bc:	81 e0       	ldi	r24, 0x01	; 1
+ 3be:	0e 94 41 01 	call	0x282	; 0x282 <HLCD_voidWriteCommand>
+ 3c2:	62 e0       	ldi	r22, 0x02	; 2
+ 3c4:	70 e0       	ldi	r23, 0x00	; 0
+ 3c6:	80 e0       	ldi	r24, 0x00	; 0
+ 3c8:	90 e0       	ldi	r25, 0x00	; 0
+ 3ca:	0e 94 b7 02 	call	0x56e	; 0x56e <LDelay_voidDelay_ms>
+ 3ce:	86 e0       	ldi	r24, 0x06	; 6
+ 3d0:	0e 94 41 01 	call	0x282	; 0x282 <HLCD_voidWriteCommand>
+ 3d4:	62 e0       	ldi	r22, 0x02	; 2
+ 3d6:	70 e0       	ldi	r23, 0x00	; 0
+ 3d8:	80 e0       	ldi	r24, 0x00	; 0
+ 3da:	90 e0       	ldi	r25, 0x00	; 0
+ 3dc:	0e 94 b7 02 	call	0x56e	; 0x56e <LDelay_voidDelay_ms>
+ 3e0:	80 e4       	ldi	r24, 0x40	; 64
+ 3e2:	0e 94 41 01 	call	0x282	; 0x282 <HLCD_voidWriteCommand>
+ 3e6:	ca e7       	ldi	r28, 0x7A	; 122
+ 3e8:	d0 e0       	ldi	r29, 0x00	; 0
+ 3ea:	0f 2e       	mov	r0, r31
+ 3ec:	fa eb       	ldi	r31, 0xBA	; 186
+ 3ee:	ef 2e       	mov	r14, r31
+ 3f0:	f0 e0       	ldi	r31, 0x00	; 0
+ 3f2:	ff 2e       	mov	r15, r31
+ 3f4:	f0 2d       	mov	r31, r0
+ 3f6:	0a c0       	rjmp	.+20     	; 0x40c <__LOCK_REGION_LENGTH__+0xc>
+ 3f8:	89 91       	ld	r24, Y+
+ 3fa:	0e 94 e0 00 	call	0x1c0	; 0x1c0 <HLCD_voidWriteData>
+ 3fe:	c0 17       	cp	r28, r16
+ 400:	d1 07       	cpc	r29, r17
+ 402:	d1 f7       	brne	.-12     	; 0x3f8 <HLCD_voidInitializeLCD+0xb4>
+ 404:	e8 01       	movw	r28, r16
+ 406:	e0 16       	cp	r14, r16
+ 408:	f1 06       	cpc	r15, r17
+ 40a:	21 f0       	breq	.+8      	; 0x414 <__LOCK_REGION_LENGTH__+0x14>
+ 40c:	8e 01       	movw	r16, r28
+ 40e:	08 5f       	subi	r16, 0xF8	; 248
+ 410:	1f 4f       	sbci	r17, 0xFF	; 255
+ 412:	f2 cf       	rjmp	.-28     	; 0x3f8 <HLCD_voidInitializeLCD+0xb4>
+ 414:	80 e8       	ldi	r24, 0x80	; 128
+ 416:	0e 94 41 01 	call	0x282	; 0x282 <HLCD_voidWriteCommand>
+ 41a:	df 91       	pop	r29
+ 41c:	cf 91       	pop	r28
+ 41e:	1f 91       	pop	r17
+ 420:	0f 91       	pop	r16
+ 422:	ff 90       	pop	r15
+ 424:	ef 90       	pop	r14
+ 426:	08 95       	ret
+
+00000428 <HLCD_voidSelectLine>:
+ 428:	81 30       	cpi	r24, 0x01	; 1
+ 42a:	19 f0       	breq	.+6      	; 0x432 <HLCD_voidSelectLine+0xa>
+ 42c:	82 30       	cpi	r24, 0x02	; 2
+ 42e:	29 f0       	breq	.+10     	; 0x43a <HLCD_voidSelectLine+0x12>
+ 430:	08 95       	ret
+ 432:	80 e8       	ldi	r24, 0x80	; 128
+ 434:	0e 94 41 01 	call	0x282	; 0x282 <HLCD_voidWriteCommand>
+ 438:	08 95       	ret
+ 43a:	80 ec       	ldi	r24, 0xC0	; 192
+ 43c:	0e 94 41 01 	call	0x282	; 0x282 <HLCD_voidWriteCommand>
+ 440:	08 95       	ret
+
+00000442 <HLCD_voidDisplayChar>:
+ 442:	8a 30       	cpi	r24, 0x0A	; 10
+ 444:	20 f4       	brcc	.+8      	; 0x44e <HLCD_voidDisplayChar+0xc>
+ 446:	80 5d       	subi	r24, 0xD0	; 208
+ 448:	0e 94 e0 00 	call	0x1c0	; 0x1c0 <HLCD_voidWriteData>
+ 44c:	08 95       	ret
+ 44e:	0e 94 e0 00 	call	0x1c0	; 0x1c0 <HLCD_voidWriteData>
+ 452:	08 95       	ret
+
+00000454 <HLCD_voidDisplayString>:
+ 454:	bf 92       	push	r11
+ 456:	cf 92       	push	r12
+ 458:	df 92       	push	r13
+ 45a:	ef 92       	push	r14
+ 45c:	ff 92       	push	r15
+ 45e:	0f 93       	push	r16
+ 460:	1f 93       	push	r17
+ 462:	cf 93       	push	r28
+ 464:	df 93       	push	r29
+ 466:	ec 01       	movw	r28, r24
+ 468:	61 11       	cpse	r22, r1
+ 46a:	48 c0       	rjmp	.+144    	; 0x4fc <HLCD_voidDisplayString+0xa8>
+ 46c:	c8 80       	ld	r12, Y
+ 46e:	d9 80       	ldd	r13, Y+1	; 0x01
+ 470:	ea 80       	ldd	r14, Y+2	; 0x02
+ 472:	fb 80       	ldd	r15, Y+3	; 0x03
+ 474:	c1 14       	cp	r12, r1
+ 476:	d1 04       	cpc	r13, r1
+ 478:	e1 04       	cpc	r14, r1
+ 47a:	f1 04       	cpc	r15, r1
+ 47c:	21 f4       	brne	.+8      	; 0x486 <HLCD_voidDisplayString+0x32>
+ 47e:	80 e0       	ldi	r24, 0x00	; 0
+ 480:	0e 94 21 02 	call	0x442	; 0x442 <HLCD_voidDisplayChar>
+ 484:	46 c0       	rjmp	.+140    	; 0x512 <HLCD_voidDisplayString+0xbe>
+ 486:	d0 e0       	ldi	r29, 0x00	; 0
+ 488:	19 e0       	ldi	r17, 0x09	; 9
+ 48a:	c1 2f       	mov	r28, r17
+ 48c:	cd 1b       	sub	r28, r29
+ 48e:	6c 2f       	mov	r22, r28
+ 490:	8a e0       	ldi	r24, 0x0A	; 10
+ 492:	0e 94 fc 02 	call	0x5f8	; 0x5f8 <LMATH_u32GetExponential>
+ 496:	9b 01       	movw	r18, r22
+ 498:	ac 01       	movw	r20, r24
+ 49a:	c7 01       	movw	r24, r14
+ 49c:	b6 01       	movw	r22, r12
+ 49e:	0e 94 64 05 	call	0xac8	; 0xac8 <__udivmodsi4>
+ 4a2:	23 2b       	or	r18, r19
+ 4a4:	24 2b       	or	r18, r20
+ 4a6:	25 2b       	or	r18, r21
+ 4a8:	29 f1       	breq	.+74     	; 0x4f4 <HLCD_voidDisplayString+0xa0>
+ 4aa:	da 30       	cpi	r29, 0x0A	; 10
+ 4ac:	90 f5       	brcc	.+100    	; 0x512 <HLCD_voidDisplayString+0xbe>
+ 4ae:	6c 2f       	mov	r22, r28
+ 4b0:	8a e0       	ldi	r24, 0x0A	; 10
+ 4b2:	0e 94 fc 02 	call	0x5f8	; 0x5f8 <LMATH_u32GetExponential>
+ 4b6:	9b 01       	movw	r18, r22
+ 4b8:	ac 01       	movw	r20, r24
+ 4ba:	c7 01       	movw	r24, r14
+ 4bc:	b6 01       	movw	r22, r12
+ 4be:	0e 94 64 05 	call	0xac8	; 0xac8 <__udivmodsi4>
+ 4c2:	b6 2e       	mov	r11, r22
+ 4c4:	07 2f       	mov	r16, r23
+ 4c6:	18 2f       	mov	r17, r24
+ 4c8:	d9 2f       	mov	r29, r25
+ 4ca:	6c 2f       	mov	r22, r28
+ 4cc:	8a e0       	ldi	r24, 0x0A	; 10
+ 4ce:	0e 94 fc 02 	call	0x5f8	; 0x5f8 <LMATH_u32GetExponential>
+ 4d2:	9b 01       	movw	r18, r22
+ 4d4:	ac 01       	movw	r20, r24
+ 4d6:	c7 01       	movw	r24, r14
+ 4d8:	b6 01       	movw	r22, r12
+ 4da:	0e 94 64 05 	call	0xac8	; 0xac8 <__udivmodsi4>
+ 4de:	82 2f       	mov	r24, r18
+ 4e0:	0e 94 21 02 	call	0x442	; 0x442 <HLCD_voidDisplayChar>
+ 4e4:	c1 50       	subi	r28, 0x01	; 1
+ 4e6:	cb 2c       	mov	r12, r11
+ 4e8:	d0 2e       	mov	r13, r16
+ 4ea:	e1 2e       	mov	r14, r17
+ 4ec:	fd 2e       	mov	r15, r29
+ 4ee:	cf 3f       	cpi	r28, 0xFF	; 255
+ 4f0:	f1 f6       	brne	.-68     	; 0x4ae <HLCD_voidDisplayString+0x5a>
+ 4f2:	0f c0       	rjmp	.+30     	; 0x512 <HLCD_voidDisplayString+0xbe>
+ 4f4:	df 5f       	subi	r29, 0xFF	; 255
+ 4f6:	da 30       	cpi	r29, 0x0A	; 10
+ 4f8:	41 f6       	brne	.-112    	; 0x48a <HLCD_voidDisplayString+0x36>
+ 4fa:	0b c0       	rjmp	.+22     	; 0x512 <HLCD_voidDisplayString+0xbe>
+ 4fc:	61 30       	cpi	r22, 0x01	; 1
+ 4fe:	49 f4       	brne	.+18     	; 0x512 <HLCD_voidDisplayString+0xbe>
+ 500:	88 81       	ld	r24, Y
+ 502:	88 23       	and	r24, r24
+ 504:	31 f0       	breq	.+12     	; 0x512 <HLCD_voidDisplayString+0xbe>
+ 506:	21 96       	adiw	r28, 0x01	; 1
+ 508:	0e 94 21 02 	call	0x442	; 0x442 <HLCD_voidDisplayChar>
+ 50c:	89 91       	ld	r24, Y+
+ 50e:	81 11       	cpse	r24, r1
+ 510:	fb cf       	rjmp	.-10     	; 0x508 <HLCD_voidDisplayString+0xb4>
+ 512:	df 91       	pop	r29
+ 514:	cf 91       	pop	r28
+ 516:	1f 91       	pop	r17
+ 518:	0f 91       	pop	r16
+ 51a:	ff 90       	pop	r15
+ 51c:	ef 90       	pop	r14
+ 51e:	df 90       	pop	r13
+ 520:	cf 90       	pop	r12
+ 522:	bf 90       	pop	r11
+ 524:	08 95       	ret
+
+00000526 <HLCD_voidCursorDisplayOnOff>:
+  * return      : void  
+  */
+  void HLCD_voidCursorDisplayOnOff(u8 Copy_u8Status)
+  {
+	  /*Set Display status value (on or off)*/
+	  L_UTILS_SET_BIT_VALUE(DisplayAndCursorCommand,HLCD_CURSOR_BIT,Copy_u8Status);
+ 526:	81 11       	cpse	r24, r1
+ 528:	06 c0       	rjmp	.+12     	; 0x536 <HLCD_voidCursorDisplayOnOff+0x10>
+ 52a:	80 91 69 00 	lds	r24, 0x0069	; 0x800069 <DisplayAndCursorCommand>
+ 52e:	8d 7f       	andi	r24, 0xFD	; 253
+ 530:	80 93 69 00 	sts	0x0069, r24	; 0x800069 <DisplayAndCursorCommand>
+ 534:	05 c0       	rjmp	.+10     	; 0x540 <HLCD_voidCursorDisplayOnOff+0x1a>
+ 536:	80 91 69 00 	lds	r24, 0x0069	; 0x800069 <DisplayAndCursorCommand>
+ 53a:	82 60       	ori	r24, 0x02	; 2
+ 53c:	80 93 69 00 	sts	0x0069, r24	; 0x800069 <DisplayAndCursorCommand>
+	  /*Send command*/
+	  HLCD_voidWriteCommand(DisplayAndCursorCommand);
+ 540:	80 91 69 00 	lds	r24, 0x0069	; 0x800069 <DisplayAndCursorCommand>
+ 544:	0e 94 41 01 	call	0x282	; 0x282 <HLCD_voidWriteCommand>
+ 548:	08 95       	ret
+
+0000054a <HLCD_voidCursorBlinkOnOff>:
+  * return      : void  
+  */
+  void HLCD_voidCursorBlinkOnOff(u8 Copy_u8Status) 
+  {
+	  /*Set Cursor status value (on or off)*/
+	  L_UTILS_SET_BIT_VALUE(DisplayAndCursorCommand,HLCD_BLINK_BIT,Copy_u8Status);
+ 54a:	81 11       	cpse	r24, r1
+ 54c:	06 c0       	rjmp	.+12     	; 0x55a <HLCD_voidCursorBlinkOnOff+0x10>
+ 54e:	80 91 69 00 	lds	r24, 0x0069	; 0x800069 <DisplayAndCursorCommand>
+ 552:	8e 7f       	andi	r24, 0xFE	; 254
+ 554:	80 93 69 00 	sts	0x0069, r24	; 0x800069 <DisplayAndCursorCommand>
+ 558:	05 c0       	rjmp	.+10     	; 0x564 <HLCD_voidCursorBlinkOnOff+0x1a>
+ 55a:	80 91 69 00 	lds	r24, 0x0069	; 0x800069 <DisplayAndCursorCommand>
+ 55e:	81 60       	ori	r24, 0x01	; 1
+ 560:	80 93 69 00 	sts	0x0069, r24	; 0x800069 <DisplayAndCursorCommand>
+	  /*Send command*/
+	  HLCD_voidWriteCommand(DisplayAndCursorCommand);
+ 564:	80 91 69 00 	lds	r24, 0x0069	; 0x800069 <DisplayAndCursorCommand>
+ 568:	0e 94 41 01 	call	0x282	; 0x282 <HLCD_voidWriteCommand>
+ 56c:	08 95       	ret
+
+0000056e <LDelay_voidDelay_ms>:
+#include "LDELAY_Interface.h"
+#include "LDELAY_Private.h"
+
+
+void LDelay_voidDelay_ms(u32 Copy_u32Time_ms)
+{
+ 56e:	8f 92       	push	r8
+ 570:	9f 92       	push	r9
+ 572:	af 92       	push	r10
+ 574:	bf 92       	push	r11
+ 576:	cf 92       	push	r12
+ 578:	df 92       	push	r13
+ 57a:	ef 92       	push	r14
+ 57c:	ff 92       	push	r15
+ 57e:	0f 93       	push	r16
+ 580:	9b 01       	movw	r18, r22
+ 582:	ac 01       	movw	r20, r24
+	
+	Copy_u32Time_ms = (Copy_u32Time_ms * 100000)-(LDELAY_CalculationTime + LDELAY_ContextSwitch);
+ 584:	60 ea       	ldi	r22, 0xA0	; 160
+ 586:	76 e8       	ldi	r23, 0x86	; 134
+ 588:	81 e0       	ldi	r24, 0x01	; 1
+ 58a:	90 e0       	ldi	r25, 0x00	; 0
+ 58c:	0e 94 54 05 	call	0xaa8	; 0xaa8 <__mulsi3>
+	u32 Local_u32NoLoops = Copy_u32Time_ms/LDELAY_LoopTime;
+ 590:	66 56       	subi	r22, 0x66	; 102
+ 592:	79 40       	sbci	r23, 0x09	; 9
+ 594:	81 09       	sbc	r24, r1
+ 596:	91 09       	sbc	r25, r1
+ 598:	29 eb       	ldi	r18, 0xB9	; 185
+ 59a:	35 e7       	ldi	r19, 0x75	; 117
+ 59c:	49 e7       	ldi	r20, 0x79	; 121
+ 59e:	57 e0       	ldi	r21, 0x07	; 7
+ 5a0:	0e 94 91 05 	call	0xb22	; 0xb22 <__umulsidi3>
+ 5a4:	00 e2       	ldi	r16, 0x20	; 32
+ 5a6:	0e 94 be 05 	call	0xb7c	; 0xb7c <__lshrdi3>
+ 5aa:	82 2e       	mov	r8, r18
+ 5ac:	93 2e       	mov	r9, r19
+ 5ae:	a4 2e       	mov	r10, r20
+ 5b0:	b5 2e       	mov	r11, r21
+ 5b2:	b6 94       	lsr	r11
+ 5b4:	a7 94       	ror	r10
+ 5b6:	97 94       	ror	r9
+ 5b8:	87 94       	ror	r8
+ 5ba:	b6 94       	lsr	r11
+ 5bc:	a7 94       	ror	r10
+ 5be:	97 94       	ror	r9
+ 5c0:	87 94       	ror	r8
+	for(u32 i=0;i<Local_u32NoLoops;i++)
+ 5c2:	81 14       	cp	r8, r1
+ 5c4:	91 04       	cpc	r9, r1
+ 5c6:	a1 04       	cpc	r10, r1
+ 5c8:	b1 04       	cpc	r11, r1
+ 5ca:	61 f0       	breq	.+24     	; 0x5e4 <LDelay_voidDelay_ms+0x76>
+ 5cc:	80 e0       	ldi	r24, 0x00	; 0
+ 5ce:	90 e0       	ldi	r25, 0x00	; 0
+ 5d0:	dc 01       	movw	r26, r24
+	{
+		asm("NOP");
+ 5d2:	00 00       	nop
+void LDelay_voidDelay_ms(u32 Copy_u32Time_ms)
+{
+	
+	Copy_u32Time_ms = (Copy_u32Time_ms * 100000)-(LDELAY_CalculationTime + LDELAY_ContextSwitch);
+	u32 Local_u32NoLoops = Copy_u32Time_ms/LDELAY_LoopTime;
+	for(u32 i=0;i<Local_u32NoLoops;i++)
+ 5d4:	01 96       	adiw	r24, 0x01	; 1
+ 5d6:	a1 1d       	adc	r26, r1
+ 5d8:	b1 1d       	adc	r27, r1
+ 5da:	88 16       	cp	r8, r24
+ 5dc:	99 06       	cpc	r9, r25
+ 5de:	aa 06       	cpc	r10, r26
+ 5e0:	bb 06       	cpc	r11, r27
+ 5e2:	b9 f7       	brne	.-18     	; 0x5d2 <LDelay_voidDelay_ms+0x64>
+	{
+		asm("NOP");
+	}
+	
+}
+ 5e4:	0f 91       	pop	r16
+ 5e6:	ff 90       	pop	r15
+ 5e8:	ef 90       	pop	r14
+ 5ea:	df 90       	pop	r13
+ 5ec:	cf 90       	pop	r12
+ 5ee:	bf 90       	pop	r11
+ 5f0:	af 90       	pop	r10
+ 5f2:	9f 90       	pop	r9
+ 5f4:	8f 90       	pop	r8
+ 5f6:	08 95       	ret
+
+000005f8 <LMATH_u32GetExponential>:
+ * Description : module that calculate exponential value for a given base and exponent numbers   
+ * Argument    : exponent, base
+ * return      : exponential value
+ */
+u32 LMATH_u32GetExponential(u8 Copy_u8LBase, u8 Copy_u8LExponent)
+{
+ 5f8:	cf 92       	push	r12
+ 5fa:	df 92       	push	r13
+ 5fc:	ef 92       	push	r14
+ 5fe:	ff 92       	push	r15
+ 600:	c8 2e       	mov	r12, r24
+ 602:	f6 2f       	mov	r31, r22
+    u32 Local_u32Result = 1;
+    for(u8 i =0; i<Copy_u8LExponent;i++)
+ 604:	66 23       	and	r22, r22
+ 606:	91 f0       	breq	.+36     	; 0x62c <LMATH_u32GetExponential+0x34>
+ 608:	e0 e0       	ldi	r30, 0x00	; 0
+ 60a:	61 e0       	ldi	r22, 0x01	; 1
+ 60c:	70 e0       	ldi	r23, 0x00	; 0
+ 60e:	80 e0       	ldi	r24, 0x00	; 0
+ 610:	90 e0       	ldi	r25, 0x00	; 0
+    {
+        Local_u32Result *= Copy_u8LBase;
+ 612:	d1 2c       	mov	r13, r1
+ 614:	e1 2c       	mov	r14, r1
+ 616:	f1 2c       	mov	r15, r1
+ 618:	9b 01       	movw	r18, r22
+ 61a:	ac 01       	movw	r20, r24
+ 61c:	c7 01       	movw	r24, r14
+ 61e:	b6 01       	movw	r22, r12
+ 620:	0e 94 54 05 	call	0xaa8	; 0xaa8 <__mulsi3>
+ * return      : exponential value
+ */
+u32 LMATH_u32GetExponential(u8 Copy_u8LBase, u8 Copy_u8LExponent)
+{
+    u32 Local_u32Result = 1;
+    for(u8 i =0; i<Copy_u8LExponent;i++)
+ 624:	ef 5f       	subi	r30, 0xFF	; 255
+ 626:	fe 13       	cpse	r31, r30
+ 628:	f7 cf       	rjmp	.-18     	; 0x618 <LMATH_u32GetExponential+0x20>
+ 62a:	04 c0       	rjmp	.+8      	; 0x634 <LMATH_u32GetExponential+0x3c>
+ * Argument    : exponent, base
+ * return      : exponential value
+ */
+u32 LMATH_u32GetExponential(u8 Copy_u8LBase, u8 Copy_u8LExponent)
+{
+    u32 Local_u32Result = 1;
+ 62c:	61 e0       	ldi	r22, 0x01	; 1
+ 62e:	70 e0       	ldi	r23, 0x00	; 0
+ 630:	80 e0       	ldi	r24, 0x00	; 0
+ 632:	90 e0       	ldi	r25, 0x00	; 0
+    for(u8 i =0; i<Copy_u8LExponent;i++)
+    {
+        Local_u32Result *= Copy_u8LBase;
+    }
+    return Local_u32Result;
+}
+ 634:	ff 90       	pop	r15
+ 636:	ef 90       	pop	r14
+ 638:	df 90       	pop	r13
+ 63a:	cf 90       	pop	r12
+ 63c:	08 95       	ret
+
+0000063e <main>:
+{
+	u8 character  =  0;
+	u8 Data[8]	  = {0};
+    u8 PressedKey =  0;
+	
+	MUART_voidInitializeUART();
+ 63e:	0e 94 34 05 	call	0xa68	; 0xa68 <MUART_voidInitializeUART>
+	HLCD_voidInitializeLCD();
+ 642:	0e 94 a2 01 	call	0x344	; 0x344 <HLCD_voidInitializeLCD>
+	HKPD_voidInitializeKeypad();
+ 646:	0e 94 49 00 	call	0x92	; 0x92 <HKPD_voidInitializeKeypad>
+	
+	HLCD_voidCursorDisplayOnOff(HLCD_OFF);
+ 64a:	80 e0       	ldi	r24, 0x00	; 0
+ 64c:	0e 94 93 02 	call	0x526	; 0x526 <HLCD_voidCursorDisplayOnOff>
+	HLCD_voidCursorBlinkOnOff(HLCD_OFF);
+ 650:	80 e0       	ldi	r24, 0x00	; 0
+ 652:	0e 94 a5 02 	call	0x54a	; 0x54a <HLCD_voidCursorBlinkOnOff>
+	HLCD_voidDisplayString("Received Char",HLCD_STRING);
+ 656:	61 e0       	ldi	r22, 0x01	; 1
+ 658:	8a eb       	ldi	r24, 0xBA	; 186
+ 65a:	90 e0       	ldi	r25, 0x00	; 0
+ 65c:	0e 94 2a 02 	call	0x454	; 0x454 <HLCD_voidDisplayString>
+			
+			Data[i] = character;
+			
+		}
+		*/
+		character = MUART_voidRecieveByteSynch(4000);
+ 660:	80 ea       	ldi	r24, 0xA0	; 160
+ 662:	9f e0       	ldi	r25, 0x0F	; 15
+ 664:	0e 94 48 05 	call	0xa90	; 0xa90 <MUART_voidRecieveByteSynch>
+ 668:	d8 2f       	mov	r29, r24
+		PressedKey = HKPD_u8GetPressedKey();
+ 66a:	0e 94 7a 00 	call	0xf4	; 0xf4 <HKPD_u8GetPressedKey>
+ 66e:	c8 2f       	mov	r28, r24
+		
+		if ( (PressedKey >= 0) && (PressedKey < 10) )
+ 670:	8a 30       	cpi	r24, 0x0A	; 10
+ 672:	08 f4       	brcc	.+2      	; 0x676 <main+0x38>
+		{
+			PressedKey += '0'; 
+ 674:	c0 5d       	subi	r28, 0xD0	; 208
+		}
+		
+		HLCD_voidSelectLine(HLCD_LINE2);
+ 676:	82 e0       	ldi	r24, 0x02	; 2
+ 678:	0e 94 14 02 	call	0x428	; 0x428 <HLCD_voidSelectLine>
+		HLCD_voidDisplayString("                ",HLCD_STRING);
+ 67c:	61 e0       	ldi	r22, 0x01	; 1
+ 67e:	88 ec       	ldi	r24, 0xC8	; 200
+ 680:	90 e0       	ldi	r25, 0x00	; 0
+ 682:	0e 94 2a 02 	call	0x454	; 0x454 <HLCD_voidDisplayString>
+		HLCD_voidSelectLine(HLCD_LINE2);
+ 686:	82 e0       	ldi	r24, 0x02	; 2
+ 688:	0e 94 14 02 	call	0x428	; 0x428 <HLCD_voidSelectLine>
+		HLCD_voidDisplayChar(character);
+ 68c:	8d 2f       	mov	r24, r29
+ 68e:	0e 94 21 02 	call	0x442	; 0x442 <HLCD_voidDisplayChar>
+		MUART_voidSendByteSynch(PressedKey);
+ 692:	8c 2f       	mov	r24, r28
+ 694:	0e 94 44 05 	call	0xa88	; 0xa88 <MUART_voidSendByteSynch>
+		LDelay_voidDelay_ms(1000);	
+ 698:	68 ee       	ldi	r22, 0xE8	; 232
+ 69a:	73 e0       	ldi	r23, 0x03	; 3
+ 69c:	80 e0       	ldi	r24, 0x00	; 0
+ 69e:	90 e0       	ldi	r25, 0x00	; 0
+ 6a0:	0e 94 b7 02 	call	0x56e	; 0x56e <LDelay_voidDelay_ms>
+    }
+ 6a4:	dd cf       	rjmp	.-70     	; 0x660 <main+0x22>
+
+000006a6 <MDIO_u8SetDirectionReg>:
+		case MDIO_PORTD : {DIO_PORTD = Local_u8PullUpResStatus; return 0;}  break;
+		default         : return 1; /*error Undefined Port*/
+			
+	}/*end of register switch case*/
+
+}/*end of MDIO_u8ConfigPullupReg()*/
+ 6a6:	61 30       	cpi	r22, 0x01	; 1
+ 6a8:	09 f4       	brne	.+2      	; 0x6ac <MDIO_u8SetDirectionReg+0x6>
+ 6aa:	6f ef       	ldi	r22, 0xFF	; 255
+ 6ac:	82 30       	cpi	r24, 0x02	; 2
+ 6ae:	61 f0       	breq	.+24     	; 0x6c8 <MDIO_u8SetDirectionReg+0x22>
+ 6b0:	18 f4       	brcc	.+6      	; 0x6b8 <MDIO_u8SetDirectionReg+0x12>
+ 6b2:	81 30       	cpi	r24, 0x01	; 1
+ 6b4:	31 f0       	breq	.+12     	; 0x6c2 <MDIO_u8SetDirectionReg+0x1c>
+ 6b6:	11 c0       	rjmp	.+34     	; 0x6da <MDIO_u8SetDirectionReg+0x34>
+ 6b8:	83 30       	cpi	r24, 0x03	; 3
+ 6ba:	49 f0       	breq	.+18     	; 0x6ce <MDIO_u8SetDirectionReg+0x28>
+ 6bc:	84 30       	cpi	r24, 0x04	; 4
+ 6be:	51 f0       	breq	.+20     	; 0x6d4 <MDIO_u8SetDirectionReg+0x2e>
+ 6c0:	0c c0       	rjmp	.+24     	; 0x6da <MDIO_u8SetDirectionReg+0x34>
+ 6c2:	6a bb       	out	0x1a, r22	; 26
+ 6c4:	80 e0       	ldi	r24, 0x00	; 0
+ 6c6:	08 95       	ret
+ 6c8:	67 bb       	out	0x17, r22	; 23
+ 6ca:	80 e0       	ldi	r24, 0x00	; 0
+ 6cc:	08 95       	ret
+ 6ce:	64 bb       	out	0x14, r22	; 20
+ 6d0:	80 e0       	ldi	r24, 0x00	; 0
+ 6d2:	08 95       	ret
+ 6d4:	61 bb       	out	0x11, r22	; 17
+ 6d6:	80 e0       	ldi	r24, 0x00	; 0
+ 6d8:	08 95       	ret
+ 6da:	81 e0       	ldi	r24, 0x01	; 1
+ 6dc:	08 95       	ret
+
+000006de <MDIO_u8SetDirectionBit>:
+ 6de:	68 30       	cpi	r22, 0x08	; 8
+ 6e0:	08 f0       	brcs	.+2      	; 0x6e4 <MDIO_u8SetDirectionBit+0x6>
+ 6e2:	7f c0       	rjmp	.+254    	; 0x7e2 <MDIO_u8SetDirectionBit+0x104>
+ 6e4:	42 30       	cpi	r20, 0x02	; 2
+ 6e6:	08 f0       	brcs	.+2      	; 0x6ea <MDIO_u8SetDirectionBit+0xc>
+ 6e8:	7e c0       	rjmp	.+252    	; 0x7e6 <MDIO_u8SetDirectionBit+0x108>
+ 6ea:	82 30       	cpi	r24, 0x02	; 2
+ 6ec:	31 f1       	breq	.+76     	; 0x73a <MDIO_u8SetDirectionBit+0x5c>
+ 6ee:	18 f4       	brcc	.+6      	; 0x6f6 <MDIO_u8SetDirectionBit+0x18>
+ 6f0:	81 30       	cpi	r24, 0x01	; 1
+ 6f2:	39 f0       	breq	.+14     	; 0x702 <MDIO_u8SetDirectionBit+0x24>
+ 6f4:	7a c0       	rjmp	.+244    	; 0x7ea <MDIO_u8SetDirectionBit+0x10c>
+ 6f6:	83 30       	cpi	r24, 0x03	; 3
+ 6f8:	e1 f1       	breq	.+120    	; 0x772 <MDIO_u8SetDirectionBit+0x94>
+ 6fa:	84 30       	cpi	r24, 0x04	; 4
+ 6fc:	09 f4       	brne	.+2      	; 0x700 <MDIO_u8SetDirectionBit+0x22>
+ 6fe:	55 c0       	rjmp	.+170    	; 0x7aa <MDIO_u8SetDirectionBit+0xcc>
+ 700:	74 c0       	rjmp	.+232    	; 0x7ea <MDIO_u8SetDirectionBit+0x10c>
+ 702:	41 11       	cpse	r20, r1
+ 704:	0d c0       	rjmp	.+26     	; 0x720 <MDIO_u8SetDirectionBit+0x42>
+ 706:	9a b3       	in	r25, 0x1a	; 26
+ 708:	21 e0       	ldi	r18, 0x01	; 1
+ 70a:	30 e0       	ldi	r19, 0x00	; 0
+ 70c:	02 c0       	rjmp	.+4      	; 0x712 <MDIO_u8SetDirectionBit+0x34>
+ 70e:	22 0f       	add	r18, r18
+ 710:	33 1f       	adc	r19, r19
+ 712:	6a 95       	dec	r22
+ 714:	e2 f7       	brpl	.-8      	; 0x70e <MDIO_u8SetDirectionBit+0x30>
+ 716:	82 2f       	mov	r24, r18
+ 718:	80 95       	com	r24
+ 71a:	89 23       	and	r24, r25
+ 71c:	8a bb       	out	0x1a, r24	; 26
+ 71e:	0a c0       	rjmp	.+20     	; 0x734 <MDIO_u8SetDirectionBit+0x56>
+ 720:	2a b3       	in	r18, 0x1a	; 26
+ 722:	81 e0       	ldi	r24, 0x01	; 1
+ 724:	90 e0       	ldi	r25, 0x00	; 0
+ 726:	02 c0       	rjmp	.+4      	; 0x72c <MDIO_u8SetDirectionBit+0x4e>
+ 728:	88 0f       	add	r24, r24
+ 72a:	99 1f       	adc	r25, r25
+ 72c:	6a 95       	dec	r22
+ 72e:	e2 f7       	brpl	.-8      	; 0x728 <MDIO_u8SetDirectionBit+0x4a>
+ 730:	82 2b       	or	r24, r18
+ 732:	8a bb       	out	0x1a, r24	; 26
+ 734:	8a bb       	out	0x1a, r24	; 26
+ 736:	80 e0       	ldi	r24, 0x00	; 0
+ 738:	08 95       	ret
+ 73a:	41 11       	cpse	r20, r1
+ 73c:	0d c0       	rjmp	.+26     	; 0x758 <MDIO_u8SetDirectionBit+0x7a>
+ 73e:	97 b3       	in	r25, 0x17	; 23
+ 740:	21 e0       	ldi	r18, 0x01	; 1
+ 742:	30 e0       	ldi	r19, 0x00	; 0
+ 744:	02 c0       	rjmp	.+4      	; 0x74a <MDIO_u8SetDirectionBit+0x6c>
+ 746:	22 0f       	add	r18, r18
+ 748:	33 1f       	adc	r19, r19
+ 74a:	6a 95       	dec	r22
+ 74c:	e2 f7       	brpl	.-8      	; 0x746 <MDIO_u8SetDirectionBit+0x68>
+ 74e:	82 2f       	mov	r24, r18
+ 750:	80 95       	com	r24
+ 752:	89 23       	and	r24, r25
+ 754:	87 bb       	out	0x17, r24	; 23
+ 756:	0a c0       	rjmp	.+20     	; 0x76c <MDIO_u8SetDirectionBit+0x8e>
+ 758:	27 b3       	in	r18, 0x17	; 23
+ 75a:	81 e0       	ldi	r24, 0x01	; 1
+ 75c:	90 e0       	ldi	r25, 0x00	; 0
+ 75e:	02 c0       	rjmp	.+4      	; 0x764 <MDIO_u8SetDirectionBit+0x86>
+ 760:	88 0f       	add	r24, r24
+ 762:	99 1f       	adc	r25, r25
+ 764:	6a 95       	dec	r22
+ 766:	e2 f7       	brpl	.-8      	; 0x760 <MDIO_u8SetDirectionBit+0x82>
+ 768:	82 2b       	or	r24, r18
+ 76a:	87 bb       	out	0x17, r24	; 23
+ 76c:	87 bb       	out	0x17, r24	; 23
+ 76e:	80 e0       	ldi	r24, 0x00	; 0
+ 770:	08 95       	ret
+ 772:	41 11       	cpse	r20, r1
+ 774:	0d c0       	rjmp	.+26     	; 0x790 <MDIO_u8SetDirectionBit+0xb2>
+ 776:	94 b3       	in	r25, 0x14	; 20
+ 778:	21 e0       	ldi	r18, 0x01	; 1
+ 77a:	30 e0       	ldi	r19, 0x00	; 0
+ 77c:	02 c0       	rjmp	.+4      	; 0x782 <MDIO_u8SetDirectionBit+0xa4>
+ 77e:	22 0f       	add	r18, r18
+ 780:	33 1f       	adc	r19, r19
+ 782:	6a 95       	dec	r22
+ 784:	e2 f7       	brpl	.-8      	; 0x77e <MDIO_u8SetDirectionBit+0xa0>
+ 786:	82 2f       	mov	r24, r18
+ 788:	80 95       	com	r24
+ 78a:	89 23       	and	r24, r25
+ 78c:	84 bb       	out	0x14, r24	; 20
+ 78e:	0a c0       	rjmp	.+20     	; 0x7a4 <MDIO_u8SetDirectionBit+0xc6>
+ 790:	24 b3       	in	r18, 0x14	; 20
+ 792:	81 e0       	ldi	r24, 0x01	; 1
+ 794:	90 e0       	ldi	r25, 0x00	; 0
+ 796:	02 c0       	rjmp	.+4      	; 0x79c <MDIO_u8SetDirectionBit+0xbe>
+ 798:	88 0f       	add	r24, r24
+ 79a:	99 1f       	adc	r25, r25
+ 79c:	6a 95       	dec	r22
+ 79e:	e2 f7       	brpl	.-8      	; 0x798 <MDIO_u8SetDirectionBit+0xba>
+ 7a0:	82 2b       	or	r24, r18
+ 7a2:	84 bb       	out	0x14, r24	; 20
+ 7a4:	84 bb       	out	0x14, r24	; 20
+ 7a6:	80 e0       	ldi	r24, 0x00	; 0
+ 7a8:	08 95       	ret
+ 7aa:	41 11       	cpse	r20, r1
+ 7ac:	0d c0       	rjmp	.+26     	; 0x7c8 <MDIO_u8SetDirectionBit+0xea>
+ 7ae:	91 b3       	in	r25, 0x11	; 17
+ 7b0:	21 e0       	ldi	r18, 0x01	; 1
+ 7b2:	30 e0       	ldi	r19, 0x00	; 0
+ 7b4:	02 c0       	rjmp	.+4      	; 0x7ba <MDIO_u8SetDirectionBit+0xdc>
+ 7b6:	22 0f       	add	r18, r18
+ 7b8:	33 1f       	adc	r19, r19
+ 7ba:	6a 95       	dec	r22
+ 7bc:	e2 f7       	brpl	.-8      	; 0x7b6 <MDIO_u8SetDirectionBit+0xd8>
+ 7be:	82 2f       	mov	r24, r18
+ 7c0:	80 95       	com	r24
+ 7c2:	89 23       	and	r24, r25
+ 7c4:	81 bb       	out	0x11, r24	; 17
+ 7c6:	0a c0       	rjmp	.+20     	; 0x7dc <MDIO_u8SetDirectionBit+0xfe>
+ 7c8:	21 b3       	in	r18, 0x11	; 17
+ 7ca:	81 e0       	ldi	r24, 0x01	; 1
+ 7cc:	90 e0       	ldi	r25, 0x00	; 0
+ 7ce:	02 c0       	rjmp	.+4      	; 0x7d4 <MDIO_u8SetDirectionBit+0xf6>
+ 7d0:	88 0f       	add	r24, r24
+ 7d2:	99 1f       	adc	r25, r25
+ 7d4:	6a 95       	dec	r22
+ 7d6:	e2 f7       	brpl	.-8      	; 0x7d0 <MDIO_u8SetDirectionBit+0xf2>
+ 7d8:	82 2b       	or	r24, r18
+ 7da:	81 bb       	out	0x11, r24	; 17
+ 7dc:	81 bb       	out	0x11, r24	; 17
+ 7de:	80 e0       	ldi	r24, 0x00	; 0
+ 7e0:	08 95       	ret
+ 7e2:	82 e0       	ldi	r24, 0x02	; 2
+ 7e4:	08 95       	ret
+ 7e6:	83 e0       	ldi	r24, 0x03	; 3
+ 7e8:	08 95       	ret
+ 7ea:	81 e0       	ldi	r24, 0x01	; 1
+ 7ec:	08 95       	ret
+
+000007ee <MDIO_u8WriteBit>:
+ 7ee:	68 30       	cpi	r22, 0x08	; 8
+ 7f0:	08 f0       	brcs	.+2      	; 0x7f4 <MDIO_u8WriteBit+0x6>
+ 7f2:	7b c0       	rjmp	.+246    	; 0x8ea <__stack+0x8b>
+ 7f4:	42 30       	cpi	r20, 0x02	; 2
+ 7f6:	08 f0       	brcs	.+2      	; 0x7fa <MDIO_u8WriteBit+0xc>
+ 7f8:	7a c0       	rjmp	.+244    	; 0x8ee <__stack+0x8f>
+ 7fa:	82 30       	cpi	r24, 0x02	; 2
+ 7fc:	29 f1       	breq	.+74     	; 0x848 <MDIO_u8WriteBit+0x5a>
+ 7fe:	18 f4       	brcc	.+6      	; 0x806 <MDIO_u8WriteBit+0x18>
+ 800:	81 30       	cpi	r24, 0x01	; 1
+ 802:	39 f0       	breq	.+14     	; 0x812 <MDIO_u8WriteBit+0x24>
+ 804:	76 c0       	rjmp	.+236    	; 0x8f2 <__stack+0x93>
+ 806:	83 30       	cpi	r24, 0x03	; 3
+ 808:	d1 f1       	breq	.+116    	; 0x87e <__stack+0x1f>
+ 80a:	84 30       	cpi	r24, 0x04	; 4
+ 80c:	09 f4       	brne	.+2      	; 0x810 <MDIO_u8WriteBit+0x22>
+ 80e:	52 c0       	rjmp	.+164    	; 0x8b4 <__stack+0x55>
+ 810:	70 c0       	rjmp	.+224    	; 0x8f2 <__stack+0x93>
+ 812:	41 11       	cpse	r20, r1
+ 814:	0d c0       	rjmp	.+26     	; 0x830 <MDIO_u8WriteBit+0x42>
+ 816:	2b b3       	in	r18, 0x1b	; 27
+ 818:	81 e0       	ldi	r24, 0x01	; 1
+ 81a:	90 e0       	ldi	r25, 0x00	; 0
+ 81c:	02 c0       	rjmp	.+4      	; 0x822 <MDIO_u8WriteBit+0x34>
+ 81e:	88 0f       	add	r24, r24
+ 820:	99 1f       	adc	r25, r25
+ 822:	6a 95       	dec	r22
+ 824:	e2 f7       	brpl	.-8      	; 0x81e <MDIO_u8WriteBit+0x30>
+ 826:	80 95       	com	r24
+ 828:	82 23       	and	r24, r18
+ 82a:	8b bb       	out	0x1b, r24	; 27
+ 82c:	80 e0       	ldi	r24, 0x00	; 0
+ 82e:	08 95       	ret
+ 830:	2b b3       	in	r18, 0x1b	; 27
+ 832:	81 e0       	ldi	r24, 0x01	; 1
+ 834:	90 e0       	ldi	r25, 0x00	; 0
+ 836:	02 c0       	rjmp	.+4      	; 0x83c <MDIO_u8WriteBit+0x4e>
+ 838:	88 0f       	add	r24, r24
+ 83a:	99 1f       	adc	r25, r25
+ 83c:	6a 95       	dec	r22
+ 83e:	e2 f7       	brpl	.-8      	; 0x838 <MDIO_u8WriteBit+0x4a>
+ 840:	82 2b       	or	r24, r18
+ 842:	8b bb       	out	0x1b, r24	; 27
+ 844:	80 e0       	ldi	r24, 0x00	; 0
+ 846:	08 95       	ret
+ 848:	41 11       	cpse	r20, r1
+ 84a:	0d c0       	rjmp	.+26     	; 0x866 <__stack+0x7>
+ 84c:	28 b3       	in	r18, 0x18	; 24
+ 84e:	81 e0       	ldi	r24, 0x01	; 1
+ 850:	90 e0       	ldi	r25, 0x00	; 0
+ 852:	02 c0       	rjmp	.+4      	; 0x858 <MDIO_u8WriteBit+0x6a>
+ 854:	88 0f       	add	r24, r24
+ 856:	99 1f       	adc	r25, r25
+ 858:	6a 95       	dec	r22
+ 85a:	e2 f7       	brpl	.-8      	; 0x854 <MDIO_u8WriteBit+0x66>
+ 85c:	80 95       	com	r24
+ 85e:	82 23       	and	r24, r18
+ 860:	88 bb       	out	0x18, r24	; 24
+ 862:	80 e0       	ldi	r24, 0x00	; 0
+ 864:	08 95       	ret
+ 866:	28 b3       	in	r18, 0x18	; 24
+ 868:	81 e0       	ldi	r24, 0x01	; 1
+ 86a:	90 e0       	ldi	r25, 0x00	; 0
+ 86c:	02 c0       	rjmp	.+4      	; 0x872 <__stack+0x13>
+ 86e:	88 0f       	add	r24, r24
+ 870:	99 1f       	adc	r25, r25
+ 872:	6a 95       	dec	r22
+ 874:	e2 f7       	brpl	.-8      	; 0x86e <__stack+0xf>
+ 876:	82 2b       	or	r24, r18
+ 878:	88 bb       	out	0x18, r24	; 24
+ 87a:	80 e0       	ldi	r24, 0x00	; 0
+ 87c:	08 95       	ret
+ 87e:	41 11       	cpse	r20, r1
+ 880:	0d c0       	rjmp	.+26     	; 0x89c <__stack+0x3d>
+ 882:	25 b3       	in	r18, 0x15	; 21
+ 884:	81 e0       	ldi	r24, 0x01	; 1
+ 886:	90 e0       	ldi	r25, 0x00	; 0
+ 888:	02 c0       	rjmp	.+4      	; 0x88e <__stack+0x2f>
+ 88a:	88 0f       	add	r24, r24
+ 88c:	99 1f       	adc	r25, r25
+ 88e:	6a 95       	dec	r22
+ 890:	e2 f7       	brpl	.-8      	; 0x88a <__stack+0x2b>
+ 892:	80 95       	com	r24
+ 894:	82 23       	and	r24, r18
+ 896:	85 bb       	out	0x15, r24	; 21
+ 898:	80 e0       	ldi	r24, 0x00	; 0
+ 89a:	08 95       	ret
+ 89c:	25 b3       	in	r18, 0x15	; 21
+ 89e:	81 e0       	ldi	r24, 0x01	; 1
+ 8a0:	90 e0       	ldi	r25, 0x00	; 0
+ 8a2:	02 c0       	rjmp	.+4      	; 0x8a8 <__stack+0x49>
+ 8a4:	88 0f       	add	r24, r24
+ 8a6:	99 1f       	adc	r25, r25
+ 8a8:	6a 95       	dec	r22
+ 8aa:	e2 f7       	brpl	.-8      	; 0x8a4 <__stack+0x45>
+ 8ac:	82 2b       	or	r24, r18
+ 8ae:	85 bb       	out	0x15, r24	; 21
+ 8b0:	80 e0       	ldi	r24, 0x00	; 0
+ 8b2:	08 95       	ret
+ 8b4:	41 11       	cpse	r20, r1
+ 8b6:	0d c0       	rjmp	.+26     	; 0x8d2 <__stack+0x73>
+ 8b8:	22 b3       	in	r18, 0x12	; 18
+ 8ba:	81 e0       	ldi	r24, 0x01	; 1
+ 8bc:	90 e0       	ldi	r25, 0x00	; 0
+ 8be:	02 c0       	rjmp	.+4      	; 0x8c4 <__stack+0x65>
+ 8c0:	88 0f       	add	r24, r24
+ 8c2:	99 1f       	adc	r25, r25
+ 8c4:	6a 95       	dec	r22
+ 8c6:	e2 f7       	brpl	.-8      	; 0x8c0 <__stack+0x61>
+ 8c8:	80 95       	com	r24
+ 8ca:	82 23       	and	r24, r18
+ 8cc:	82 bb       	out	0x12, r24	; 18
+ 8ce:	80 e0       	ldi	r24, 0x00	; 0
+ 8d0:	08 95       	ret
+ 8d2:	22 b3       	in	r18, 0x12	; 18
+ 8d4:	81 e0       	ldi	r24, 0x01	; 1
+ 8d6:	90 e0       	ldi	r25, 0x00	; 0
+ 8d8:	02 c0       	rjmp	.+4      	; 0x8de <__stack+0x7f>
+ 8da:	88 0f       	add	r24, r24
+ 8dc:	99 1f       	adc	r25, r25
+ 8de:	6a 95       	dec	r22
+ 8e0:	e2 f7       	brpl	.-8      	; 0x8da <__stack+0x7b>
+ 8e2:	82 2b       	or	r24, r18
+ 8e4:	82 bb       	out	0x12, r24	; 18
+ 8e6:	80 e0       	ldi	r24, 0x00	; 0
+ 8e8:	08 95       	ret
+ 8ea:	82 e0       	ldi	r24, 0x02	; 2
+ 8ec:	08 95       	ret
+ 8ee:	83 e0       	ldi	r24, 0x03	; 3
+ 8f0:	08 95       	ret
+ 8f2:	81 e0       	ldi	r24, 0x01	; 1
+ 8f4:	08 95       	ret
+
+000008f6 <MDIO_u8ReadBit>:
+ 8f6:	68 30       	cpi	r22, 0x08	; 8
+ 8f8:	78 f5       	brcc	.+94     	; 0x958 <MDIO_u8ReadBit+0x62>
+ 8fa:	82 30       	cpi	r24, 0x02	; 2
+ 8fc:	91 f0       	breq	.+36     	; 0x922 <MDIO_u8ReadBit+0x2c>
+ 8fe:	18 f4       	brcc	.+6      	; 0x906 <MDIO_u8ReadBit+0x10>
+ 900:	81 30       	cpi	r24, 0x01	; 1
+ 902:	31 f0       	breq	.+12     	; 0x910 <MDIO_u8ReadBit+0x1a>
+ 904:	2b c0       	rjmp	.+86     	; 0x95c <MDIO_u8ReadBit+0x66>
+ 906:	83 30       	cpi	r24, 0x03	; 3
+ 908:	a9 f0       	breq	.+42     	; 0x934 <MDIO_u8ReadBit+0x3e>
+ 90a:	84 30       	cpi	r24, 0x04	; 4
+ 90c:	e1 f0       	breq	.+56     	; 0x946 <MDIO_u8ReadBit+0x50>
+ 90e:	26 c0       	rjmp	.+76     	; 0x95c <MDIO_u8ReadBit+0x66>
+ 910:	89 b3       	in	r24, 0x19	; 25
+ 912:	90 e0       	ldi	r25, 0x00	; 0
+ 914:	02 c0       	rjmp	.+4      	; 0x91a <MDIO_u8ReadBit+0x24>
+ 916:	95 95       	asr	r25
+ 918:	87 95       	ror	r24
+ 91a:	6a 95       	dec	r22
+ 91c:	e2 f7       	brpl	.-8      	; 0x916 <MDIO_u8ReadBit+0x20>
+ 91e:	81 70       	andi	r24, 0x01	; 1
+ 920:	08 95       	ret
+ 922:	86 b3       	in	r24, 0x16	; 22
+ 924:	90 e0       	ldi	r25, 0x00	; 0
+ 926:	02 c0       	rjmp	.+4      	; 0x92c <MDIO_u8ReadBit+0x36>
+ 928:	95 95       	asr	r25
+ 92a:	87 95       	ror	r24
+ 92c:	6a 95       	dec	r22
+ 92e:	e2 f7       	brpl	.-8      	; 0x928 <MDIO_u8ReadBit+0x32>
+ 930:	81 70       	andi	r24, 0x01	; 1
+ 932:	08 95       	ret
+ 934:	83 b3       	in	r24, 0x13	; 19
+ 936:	90 e0       	ldi	r25, 0x00	; 0
+ 938:	02 c0       	rjmp	.+4      	; 0x93e <MDIO_u8ReadBit+0x48>
+ 93a:	95 95       	asr	r25
+ 93c:	87 95       	ror	r24
+ 93e:	6a 95       	dec	r22
+ 940:	e2 f7       	brpl	.-8      	; 0x93a <MDIO_u8ReadBit+0x44>
+ 942:	81 70       	andi	r24, 0x01	; 1
+ 944:	08 95       	ret
+ 946:	80 b3       	in	r24, 0x10	; 16
+ 948:	90 e0       	ldi	r25, 0x00	; 0
+ 94a:	02 c0       	rjmp	.+4      	; 0x950 <MDIO_u8ReadBit+0x5a>
+ 94c:	95 95       	asr	r25
+ 94e:	87 95       	ror	r24
+ 950:	6a 95       	dec	r22
+ 952:	e2 f7       	brpl	.-8      	; 0x94c <MDIO_u8ReadBit+0x56>
+ 954:	81 70       	andi	r24, 0x01	; 1
+ 956:	08 95       	ret
+ 958:	83 e0       	ldi	r24, 0x03	; 3
+ 95a:	08 95       	ret
+ 95c:	82 e0       	ldi	r24, 0x02	; 2
+ 95e:	08 95       	ret
+
+00000960 <MDIO_u8ConfigPullupBit>:
+ *               resistor status value out of range
+ */
+u8 MDIO_u8ConfigPullupBit(u8 Copy_u8Reg,u8 Copy_u8Bit,u8 Copy_u8PullUpResStatus)
+{
+	/*Pull up res status check condition*/
+	if( (MDIO_EN_PULL_UP_RES == Copy_u8PullUpResStatus) || (MDIO_DIS_PULL_UP_RES == Copy_u8PullUpResStatus) )
+ 960:	42 30       	cpi	r20, 0x02	; 2
+ 962:	08 f0       	brcs	.+2      	; 0x966 <MDIO_u8ConfigPullupBit+0x6>
+ 964:	7b c0       	rjmp	.+246    	; 0xa5c <MDIO_u8ConfigPullupBit+0xfc>
+	{
+		/*bit number check condition*/
+		if( (Copy_u8Bit >= 0) && (Copy_u8Bit < 8) )
+ 966:	68 30       	cpi	r22, 0x08	; 8
+ 968:	08 f0       	brcs	.+2      	; 0x96c <MDIO_u8ConfigPullupBit+0xc>
+ 96a:	7a c0       	rjmp	.+244    	; 0xa60 <MDIO_u8ConfigPullupBit+0x100>
+		{
+			/*register switch case*/
+			switch (Copy_u8Reg)
+ 96c:	82 30       	cpi	r24, 0x02	; 2
+ 96e:	29 f1       	breq	.+74     	; 0x9ba <MDIO_u8ConfigPullupBit+0x5a>
+ 970:	18 f4       	brcc	.+6      	; 0x978 <MDIO_u8ConfigPullupBit+0x18>
+ 972:	81 30       	cpi	r24, 0x01	; 1
+ 974:	39 f0       	breq	.+14     	; 0x984 <MDIO_u8ConfigPullupBit+0x24>
+ 976:	76 c0       	rjmp	.+236    	; 0xa64 <MDIO_u8ConfigPullupBit+0x104>
+ 978:	83 30       	cpi	r24, 0x03	; 3
+ 97a:	d1 f1       	breq	.+116    	; 0x9f0 <MDIO_u8ConfigPullupBit+0x90>
+ 97c:	84 30       	cpi	r24, 0x04	; 4
+ 97e:	09 f4       	brne	.+2      	; 0x982 <MDIO_u8ConfigPullupBit+0x22>
+ 980:	52 c0       	rjmp	.+164    	; 0xa26 <MDIO_u8ConfigPullupBit+0xc6>
+ 982:	70 c0       	rjmp	.+224    	; 0xa64 <MDIO_u8ConfigPullupBit+0x104>
+			{
+				/*Configure bit value in PORTx reg with choosen pull up res status(Copy_u8PullUpResStatus)*/
+				case MDIO_PORTA : {L_UTILS_SET_BIT_VALUE(DIO_PORTA,Copy_u8Bit,Copy_u8PullUpResStatus); return 0;} break;
+ 984:	41 11       	cpse	r20, r1
+ 986:	0d c0       	rjmp	.+26     	; 0x9a2 <MDIO_u8ConfigPullupBit+0x42>
+ 988:	2b b3       	in	r18, 0x1b	; 27
+ 98a:	81 e0       	ldi	r24, 0x01	; 1
+ 98c:	90 e0       	ldi	r25, 0x00	; 0
+ 98e:	02 c0       	rjmp	.+4      	; 0x994 <MDIO_u8ConfigPullupBit+0x34>
+ 990:	88 0f       	add	r24, r24
+ 992:	99 1f       	adc	r25, r25
+ 994:	6a 95       	dec	r22
+ 996:	e2 f7       	brpl	.-8      	; 0x990 <MDIO_u8ConfigPullupBit+0x30>
+ 998:	80 95       	com	r24
+ 99a:	82 23       	and	r24, r18
+ 99c:	8b bb       	out	0x1b, r24	; 27
+ 99e:	80 e0       	ldi	r24, 0x00	; 0
+ 9a0:	08 95       	ret
+ 9a2:	2b b3       	in	r18, 0x1b	; 27
+ 9a4:	81 e0       	ldi	r24, 0x01	; 1
+ 9a6:	90 e0       	ldi	r25, 0x00	; 0
+ 9a8:	02 c0       	rjmp	.+4      	; 0x9ae <MDIO_u8ConfigPullupBit+0x4e>
+ 9aa:	88 0f       	add	r24, r24
+ 9ac:	99 1f       	adc	r25, r25
+ 9ae:	6a 95       	dec	r22
+ 9b0:	e2 f7       	brpl	.-8      	; 0x9aa <MDIO_u8ConfigPullupBit+0x4a>
+ 9b2:	82 2b       	or	r24, r18
+ 9b4:	8b bb       	out	0x1b, r24	; 27
+ 9b6:	80 e0       	ldi	r24, 0x00	; 0
+ 9b8:	08 95       	ret
+				case MDIO_PORTB : {L_UTILS_SET_BIT_VALUE(DIO_PORTB,Copy_u8Bit,Copy_u8PullUpResStatus); return 0;} break;
+ 9ba:	41 11       	cpse	r20, r1
+ 9bc:	0d c0       	rjmp	.+26     	; 0x9d8 <MDIO_u8ConfigPullupBit+0x78>
+ 9be:	28 b3       	in	r18, 0x18	; 24
+ 9c0:	81 e0       	ldi	r24, 0x01	; 1
+ 9c2:	90 e0       	ldi	r25, 0x00	; 0
+ 9c4:	02 c0       	rjmp	.+4      	; 0x9ca <MDIO_u8ConfigPullupBit+0x6a>
+ 9c6:	88 0f       	add	r24, r24
+ 9c8:	99 1f       	adc	r25, r25
+ 9ca:	6a 95       	dec	r22
+ 9cc:	e2 f7       	brpl	.-8      	; 0x9c6 <MDIO_u8ConfigPullupBit+0x66>
+ 9ce:	80 95       	com	r24
+ 9d0:	82 23       	and	r24, r18
+ 9d2:	88 bb       	out	0x18, r24	; 24
+ 9d4:	80 e0       	ldi	r24, 0x00	; 0
+ 9d6:	08 95       	ret
+ 9d8:	28 b3       	in	r18, 0x18	; 24
+ 9da:	81 e0       	ldi	r24, 0x01	; 1
+ 9dc:	90 e0       	ldi	r25, 0x00	; 0
+ 9de:	02 c0       	rjmp	.+4      	; 0x9e4 <MDIO_u8ConfigPullupBit+0x84>
+ 9e0:	88 0f       	add	r24, r24
+ 9e2:	99 1f       	adc	r25, r25
+ 9e4:	6a 95       	dec	r22
+ 9e6:	e2 f7       	brpl	.-8      	; 0x9e0 <MDIO_u8ConfigPullupBit+0x80>
+ 9e8:	82 2b       	or	r24, r18
+ 9ea:	88 bb       	out	0x18, r24	; 24
+ 9ec:	80 e0       	ldi	r24, 0x00	; 0
+ 9ee:	08 95       	ret
+				case MDIO_PORTC : {L_UTILS_SET_BIT_VALUE(DIO_PORTC,Copy_u8Bit,Copy_u8PullUpResStatus); return 0;} break;
+ 9f0:	41 11       	cpse	r20, r1
+ 9f2:	0d c0       	rjmp	.+26     	; 0xa0e <MDIO_u8ConfigPullupBit+0xae>
+ 9f4:	25 b3       	in	r18, 0x15	; 21
+ 9f6:	81 e0       	ldi	r24, 0x01	; 1
+ 9f8:	90 e0       	ldi	r25, 0x00	; 0
+ 9fa:	02 c0       	rjmp	.+4      	; 0xa00 <MDIO_u8ConfigPullupBit+0xa0>
+ 9fc:	88 0f       	add	r24, r24
+ 9fe:	99 1f       	adc	r25, r25
+ a00:	6a 95       	dec	r22
+ a02:	e2 f7       	brpl	.-8      	; 0x9fc <MDIO_u8ConfigPullupBit+0x9c>
+ a04:	80 95       	com	r24
+ a06:	82 23       	and	r24, r18
+ a08:	85 bb       	out	0x15, r24	; 21
+ a0a:	80 e0       	ldi	r24, 0x00	; 0
+ a0c:	08 95       	ret
+ a0e:	25 b3       	in	r18, 0x15	; 21
+ a10:	81 e0       	ldi	r24, 0x01	; 1
+ a12:	90 e0       	ldi	r25, 0x00	; 0
+ a14:	02 c0       	rjmp	.+4      	; 0xa1a <MDIO_u8ConfigPullupBit+0xba>
+ a16:	88 0f       	add	r24, r24
+ a18:	99 1f       	adc	r25, r25
+ a1a:	6a 95       	dec	r22
+ a1c:	e2 f7       	brpl	.-8      	; 0xa16 <MDIO_u8ConfigPullupBit+0xb6>
+ a1e:	82 2b       	or	r24, r18
+ a20:	85 bb       	out	0x15, r24	; 21
+ a22:	80 e0       	ldi	r24, 0x00	; 0
+ a24:	08 95       	ret
+				case MDIO_PORTD : {L_UTILS_SET_BIT_VALUE(DIO_PORTD,Copy_u8Bit,Copy_u8PullUpResStatus); return 0;} break;
+ a26:	41 11       	cpse	r20, r1
+ a28:	0d c0       	rjmp	.+26     	; 0xa44 <MDIO_u8ConfigPullupBit+0xe4>
+ a2a:	22 b3       	in	r18, 0x12	; 18
+ a2c:	81 e0       	ldi	r24, 0x01	; 1
+ a2e:	90 e0       	ldi	r25, 0x00	; 0
+ a30:	02 c0       	rjmp	.+4      	; 0xa36 <MDIO_u8ConfigPullupBit+0xd6>
+ a32:	88 0f       	add	r24, r24
+ a34:	99 1f       	adc	r25, r25
+ a36:	6a 95       	dec	r22
+ a38:	e2 f7       	brpl	.-8      	; 0xa32 <MDIO_u8ConfigPullupBit+0xd2>
+ a3a:	80 95       	com	r24
+ a3c:	82 23       	and	r24, r18
+ a3e:	82 bb       	out	0x12, r24	; 18
+ a40:	80 e0       	ldi	r24, 0x00	; 0
+ a42:	08 95       	ret
+ a44:	22 b3       	in	r18, 0x12	; 18
+ a46:	81 e0       	ldi	r24, 0x01	; 1
+ a48:	90 e0       	ldi	r25, 0x00	; 0
+ a4a:	02 c0       	rjmp	.+4      	; 0xa50 <MDIO_u8ConfigPullupBit+0xf0>
+ a4c:	88 0f       	add	r24, r24
+ a4e:	99 1f       	adc	r25, r25
+ a50:	6a 95       	dec	r22
+ a52:	e2 f7       	brpl	.-8      	; 0xa4c <MDIO_u8ConfigPullupBit+0xec>
+ a54:	82 2b       	or	r24, r18
+ a56:	82 bb       	out	0x12, r24	; 18
+ a58:	80 e0       	ldi	r24, 0x00	; 0
+ a5a:	08 95       	ret
+
+	}
+	else
+	{
+		/*Report Pull up res status value out of range error*/
+		return 3;
+ a5c:	83 e0       	ldi	r24, 0x03	; 3
+ a5e:	08 95       	ret
+			}/*end of Register switch case*/
+		}
+		else
+		{
+			/*Report Bit number out of range error*/
+			return 2; 
+ a60:	82 e0       	ldi	r24, 0x02	; 2
+ a62:	08 95       	ret
+				/*Configure bit value in PORTx reg with choosen pull up res status(Copy_u8PullUpResStatus)*/
+				case MDIO_PORTA : {L_UTILS_SET_BIT_VALUE(DIO_PORTA,Copy_u8Bit,Copy_u8PullUpResStatus); return 0;} break;
+				case MDIO_PORTB : {L_UTILS_SET_BIT_VALUE(DIO_PORTB,Copy_u8Bit,Copy_u8PullUpResStatus); return 0;} break;
+				case MDIO_PORTC : {L_UTILS_SET_BIT_VALUE(DIO_PORTC,Copy_u8Bit,Copy_u8PullUpResStatus); return 0;} break;
+				case MDIO_PORTD : {L_UTILS_SET_BIT_VALUE(DIO_PORTD,Copy_u8Bit,Copy_u8PullUpResStatus); return 0;} break;
+				default         : return 1;  /*error Undefined Port*/
+ a64:	81 e0       	ldi	r24, 0x01	; 1
+		/*Report Pull up res status value out of range error*/
+		return 3;
+
+	}/*end of Pull up res status check condition*/
+	
+ a66:	08 95       	ret
+
+00000a68 <MUART_voidInitializeUART>:
+ * return      : void  
+ */
+ void MUART_voidInitializeUART(void)
+ {
+	 /*Receive enable config*/
+	 L_UTILS_SET_BIT_VALUE(MUART_UCSRB,MUART_RXEN,MUART_RIECEVE_ENABLE);
+ a68:	54 9a       	sbi	0x0a, 4	; 10
+	
+	 /*Send enable config*/
+	 L_UTILS_SET_BIT_VALUE(MUART_UCSRB,MUART_TXEN,MUART_SEND_ENABLE);
+ a6a:	53 9a       	sbi	0x0a, 3	; 10
+	
+	 /*Send interrupt enable config*/
+	 L_UTILS_SET_BIT_VALUE(MUART_UCSRB,MUART_TXCIE,MUART_TX_INTERRUPT_ENABLE);
+ a6c:	56 98       	cbi	0x0a, 6	; 10
+	
+	 /*Receive interrupt enable config*/
+	 L_UTILS_SET_BIT_VALUE(MUART_UCSRB,MUART_RXCIE,MUART_RX_INTERRUPT_ENABLE);
+ a6e:	57 98       	cbi	0x0a, 7	; 10
+	 
+	 /*UDR empty interrupt enable config*/
+	 L_UTILS_SET_BIT_VALUE(MUART_UCSRB,MUART_UDRIE,MUART_UDR_INTERRUPT_ENABLE);
+ a70:	55 98       	cbi	0x0a, 5	; 10
+	 
+	 }/*end of char size check*/
+	 
+	 /*Load configuration values in UCSrC Register*/
+	 /*Set URSEL to access UCSRC Reg*/
+	 L_UTILS_SET_BIT(MUART_u8UCSRC_Value,7);
+ a72:	80 91 da 00 	lds	r24, 0x00DA	; 0x8000da <__data_end>
+ a76:	86 7b       	andi	r24, 0xB6	; 182
+ a78:	86 68       	ori	r24, 0x86	; 134
+ a7a:	80 93 da 00 	sts	0x00DA, r24	; 0x8000da <__data_end>
+	 /*Load value of UCSRC*/
+	 MUART_UCSRC = MUART_u8UCSRC_Value ;
+ a7e:	80 bd       	out	0x20, r24	; 32
+	 
+	 /*Baud Rate Value Config*/
+	 MUART_UBRRH = 0;
+ a80:	10 bc       	out	0x20, r1	; 32
+	 MUART_UBRRL = MUART_BAUD_RATE;
+ a82:	83 e3       	ldi	r24, 0x33	; 51
+ a84:	89 b9       	out	0x09, r24	; 9
+ a86:	08 95       	ret
+
+00000a88 <MUART_voidSendByteSynch>:
+ * return      : void  
+ */
+ void MUART_voidSendByteSynch(u8 Copy_u8Byte)
+ {
+	 /*wait while previous sending is complete*/
+	 while ((L_UTILS_GET_BIT(MUART_UCSRA,MUART_UDRE))==0);
+ a88:	5d 9b       	sbis	0x0b, 5	; 11
+ a8a:	fe cf       	rjmp	.-4      	; 0xa88 <MUART_voidSendByteSynch>
+	 /*send byte*/
+	 MUART_UDR = Copy_u8Byte;
+ a8c:	8c b9       	out	0x0c, r24	; 12
+ a8e:	08 95       	ret
+
+00000a90 <MUART_voidRecieveByteSynch>:
+ * Description : synchronous function that receive 1 byte over UART with desired timeout  
+ * Arguments   : u16 timeout 
+ * return      : u8 received byte  
+ */
+ u8 MUART_voidRecieveByteSynch(u16 Copy_u16Timeout)
+ {
+ a90:	9c 01       	movw	r18, r24
+	 /*wait for incoming byte for Timeout period*/
+	 do
+	 {
+		 /*if a byte received return received byte*/
+		 if ( (L_UTILS_GET_BIT(MUART_UCSRA,MUART_RXC)) == 1) return MUART_UDR;
+ a92:	8b b1       	in	r24, 0x0b	; 11
+ a94:	88 1f       	adc	r24, r24
+ a96:	88 27       	eor	r24, r24
+ a98:	88 1f       	adc	r24, r24
+ a9a:	11 f0       	breq	.+4      	; 0xaa0 <MUART_voidRecieveByteSynch+0x10>
+ a9c:	8c b1       	in	r24, 0x0c	; 12
+ a9e:	08 95       	ret
+		 
+	 }while(--Copy_u16Timeout);
+ aa0:	21 50       	subi	r18, 0x01	; 1
+ aa2:	31 09       	sbc	r19, r1
+ aa4:	b1 f7       	brne	.-20     	; 0xa92 <MUART_voidRecieveByteSynch+0x2>
+	 
+	 /*if no data received return 0*/
+	 return 0;
+	 
+ }/*end of MUART_voidRecieveByteSynch()*/
+ aa6:	08 95       	ret
+
+00000aa8 <__mulsi3>:
+ aa8:	db 01       	movw	r26, r22
+ aaa:	8f 93       	push	r24
+ aac:	9f 93       	push	r25
+ aae:	0e 94 86 05 	call	0xb0c	; 0xb0c <__muluhisi3>
+ ab2:	bf 91       	pop	r27
+ ab4:	af 91       	pop	r26
+ ab6:	a2 9f       	mul	r26, r18
+ ab8:	80 0d       	add	r24, r0
+ aba:	91 1d       	adc	r25, r1
+ abc:	a3 9f       	mul	r26, r19
+ abe:	90 0d       	add	r25, r0
+ ac0:	b2 9f       	mul	r27, r18
+ ac2:	90 0d       	add	r25, r0
+ ac4:	11 24       	eor	r1, r1
+ ac6:	08 95       	ret
+
+00000ac8 <__udivmodsi4>:
+ ac8:	a1 e2       	ldi	r26, 0x21	; 33
+ aca:	1a 2e       	mov	r1, r26
+ acc:	aa 1b       	sub	r26, r26
+ ace:	bb 1b       	sub	r27, r27
+ ad0:	fd 01       	movw	r30, r26
+ ad2:	0d c0       	rjmp	.+26     	; 0xaee <__udivmodsi4_ep>
+
+00000ad4 <__udivmodsi4_loop>:
+ ad4:	aa 1f       	adc	r26, r26
+ ad6:	bb 1f       	adc	r27, r27
+ ad8:	ee 1f       	adc	r30, r30
+ ada:	ff 1f       	adc	r31, r31
+ adc:	a2 17       	cp	r26, r18
+ ade:	b3 07       	cpc	r27, r19
+ ae0:	e4 07       	cpc	r30, r20
+ ae2:	f5 07       	cpc	r31, r21
+ ae4:	20 f0       	brcs	.+8      	; 0xaee <__udivmodsi4_ep>
+ ae6:	a2 1b       	sub	r26, r18
+ ae8:	b3 0b       	sbc	r27, r19
+ aea:	e4 0b       	sbc	r30, r20
+ aec:	f5 0b       	sbc	r31, r21
+
+00000aee <__udivmodsi4_ep>:
+ aee:	66 1f       	adc	r22, r22
+ af0:	77 1f       	adc	r23, r23
+ af2:	88 1f       	adc	r24, r24
+ af4:	99 1f       	adc	r25, r25
+ af6:	1a 94       	dec	r1
+ af8:	69 f7       	brne	.-38     	; 0xad4 <__udivmodsi4_loop>
+ afa:	60 95       	com	r22
+ afc:	70 95       	com	r23
+ afe:	80 95       	com	r24
+ b00:	90 95       	com	r25
+ b02:	9b 01       	movw	r18, r22
+ b04:	ac 01       	movw	r20, r24
+ b06:	bd 01       	movw	r22, r26
+ b08:	cf 01       	movw	r24, r30
+ b0a:	08 95       	ret
+
+00000b0c <__muluhisi3>:
+ b0c:	0e 94 da 05 	call	0xbb4	; 0xbb4 <__umulhisi3>
+ b10:	a5 9f       	mul	r26, r21
+ b12:	90 0d       	add	r25, r0
+ b14:	b4 9f       	mul	r27, r20
+ b16:	90 0d       	add	r25, r0
+ b18:	a4 9f       	mul	r26, r20
+ b1a:	80 0d       	add	r24, r0
+ b1c:	91 1d       	adc	r25, r1
+ b1e:	11 24       	eor	r1, r1
+ b20:	08 95       	ret
+
+00000b22 <__umulsidi3>:
+ b22:	e8 94       	clt
+
+00000b24 <__umulsidi3_helper>:
+ b24:	df 93       	push	r29
+ b26:	cf 93       	push	r28
+ b28:	fc 01       	movw	r30, r24
+ b2a:	db 01       	movw	r26, r22
+ b2c:	0e 94 da 05 	call	0xbb4	; 0xbb4 <__umulhisi3>
+ b30:	7f 93       	push	r23
+ b32:	6f 93       	push	r22
+ b34:	e9 01       	movw	r28, r18
+ b36:	9a 01       	movw	r18, r20
+ b38:	ac 01       	movw	r20, r24
+ b3a:	bf 93       	push	r27
+ b3c:	af 93       	push	r26
+ b3e:	3f 93       	push	r19
+ b40:	2f 93       	push	r18
+ b42:	df 01       	movw	r26, r30
+ b44:	0e 94 da 05 	call	0xbb4	; 0xbb4 <__umulhisi3>
+ b48:	26 f4       	brtc	.+8      	; 0xb52 <__umulsidi3_helper+0x2e>
+ b4a:	6c 1b       	sub	r22, r28
+ b4c:	7d 0b       	sbc	r23, r29
+ b4e:	82 0b       	sbc	r24, r18
+ b50:	93 0b       	sbc	r25, r19
+ b52:	9e 01       	movw	r18, r28
+ b54:	eb 01       	movw	r28, r22
+ b56:	fc 01       	movw	r30, r24
+ b58:	0e 94 e9 05 	call	0xbd2	; 0xbd2 <__muldi3_6>
+ b5c:	af 91       	pop	r26
+ b5e:	bf 91       	pop	r27
+ b60:	2f 91       	pop	r18
+ b62:	3f 91       	pop	r19
+ b64:	0e 94 e9 05 	call	0xbd2	; 0xbd2 <__muldi3_6>
+ b68:	be 01       	movw	r22, r28
+ b6a:	cf 01       	movw	r24, r30
+ b6c:	f9 01       	movw	r30, r18
+ b6e:	2f 91       	pop	r18
+ b70:	3f 91       	pop	r19
+ b72:	cf 91       	pop	r28
+ b74:	df 91       	pop	r29
+ b76:	08 95       	ret
+
+00000b78 <__ashrdi3>:
+ b78:	97 fb       	bst	r25, 7
+ b7a:	10 f8       	bld	r1, 0
+
+00000b7c <__lshrdi3>:
+ b7c:	16 94       	lsr	r1
+ b7e:	00 08       	sbc	r0, r0
+ b80:	0f 93       	push	r16
+ b82:	08 30       	cpi	r16, 0x08	; 8
+ b84:	98 f0       	brcs	.+38     	; 0xbac <__lshrdi3+0x30>
+ b86:	08 50       	subi	r16, 0x08	; 8
+ b88:	23 2f       	mov	r18, r19
+ b8a:	34 2f       	mov	r19, r20
+ b8c:	45 2f       	mov	r20, r21
+ b8e:	56 2f       	mov	r21, r22
+ b90:	67 2f       	mov	r22, r23
+ b92:	78 2f       	mov	r23, r24
+ b94:	89 2f       	mov	r24, r25
+ b96:	90 2d       	mov	r25, r0
+ b98:	f4 cf       	rjmp	.-24     	; 0xb82 <__lshrdi3+0x6>
+ b9a:	05 94       	asr	r0
+ b9c:	97 95       	ror	r25
+ b9e:	87 95       	ror	r24
+ ba0:	77 95       	ror	r23
+ ba2:	67 95       	ror	r22
+ ba4:	57 95       	ror	r21
+ ba6:	47 95       	ror	r20
+ ba8:	37 95       	ror	r19
+ baa:	27 95       	ror	r18
+ bac:	0a 95       	dec	r16
+ bae:	aa f7       	brpl	.-22     	; 0xb9a <__lshrdi3+0x1e>
+ bb0:	0f 91       	pop	r16
+ bb2:	08 95       	ret
+
+00000bb4 <__umulhisi3>:
+ bb4:	a2 9f       	mul	r26, r18
+ bb6:	b0 01       	movw	r22, r0
+ bb8:	b3 9f       	mul	r27, r19
+ bba:	c0 01       	movw	r24, r0
+ bbc:	a3 9f       	mul	r26, r19
+ bbe:	70 0d       	add	r23, r0
+ bc0:	81 1d       	adc	r24, r1
+ bc2:	11 24       	eor	r1, r1
+ bc4:	91 1d       	adc	r25, r1
+ bc6:	b2 9f       	mul	r27, r18
+ bc8:	70 0d       	add	r23, r0
+ bca:	81 1d       	adc	r24, r1
+ bcc:	11 24       	eor	r1, r1
+ bce:	91 1d       	adc	r25, r1
+ bd0:	08 95       	ret
+
+00000bd2 <__muldi3_6>:
+ bd2:	0e 94 da 05 	call	0xbb4	; 0xbb4 <__umulhisi3>
+ bd6:	46 0f       	add	r20, r22
+ bd8:	57 1f       	adc	r21, r23
+ bda:	c8 1f       	adc	r28, r24
+ bdc:	d9 1f       	adc	r29, r25
+ bde:	08 f4       	brcc	.+2      	; 0xbe2 <__muldi3_6+0x10>
+ be0:	31 96       	adiw	r30, 0x01	; 1
+ be2:	08 95       	ret
+
+00000be4 <_exit>:
+ be4:	f8 94       	cli
+
+00000be6 <__stop_program>:
+ be6:	ff cf       	rjmp	.-2      	; 0xbe6 <__stop_program>
